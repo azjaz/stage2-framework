@@ -1,0 +1,46 @@
+package pricingCalculatorTestFramework.page;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class GoogleHomePage extends AbstractCorePage {
+
+    private static final String HOMEPAGE_URL = "https://cloud.google.com/";
+
+    @FindBy(xpath = "//div[@id='searchbox']/input[@name='q']")
+    private WebElement searchInput;
+
+    @FindBy(xpath = "//div[@class='gs-title']//a[@href='https://cloud.google.com/products/calculator/']/b[text()='Google Cloud Platform Pricing Calculator']")
+    private WebElement searchResult;
+
+    public GoogleHomePage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(this.driver, this);
+    }
+
+    public GoogleHomePage openPage() {
+        driver.get(HOMEPAGE_URL);
+        new WebDriverWait(driver, DRIVER_TIMEOUT)
+                .until(ExpectedConditions.elementToBeClickable(searchInput));
+        return this;
+    }
+    public GoogleHomePage searchForTerm(String termToSearch) {
+        searchInput.click();
+        searchInput.sendKeys(termToSearch);
+        searchInput.sendKeys(Keys.ENTER);
+        return this;
+    }
+    public CloudPricingCalcPage clickOnRequiredLink() {
+        WebDriverWait wait = new WebDriverWait(driver, DRIVER_TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(searchResult))
+                .click();
+        return new CloudPricingCalcPage(driver);
+    }
+}
