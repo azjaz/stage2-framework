@@ -13,9 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CloudPricingCalcPage extends AbstractCorePage {
 
 
-//    @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
-//    private WebElement googleFrame;
-
     @FindBy(xpath = "//md-tab-item/div[contains(@class,'compute')]")
     private WebElement computeEngineBlock;
 
@@ -36,6 +33,9 @@ public class CloudPricingCalcPage extends AbstractCorePage {
 
     @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
     private WebElement addGPUsCheckbox;
+
+    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuCount')]")
+    private WebElement numberOfGPUs;
 
     @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuType')]")
     private WebElement gpuTypeSelect;
@@ -62,8 +62,7 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     }
     public CloudPricingCalcPage activateComputeEngineBlock() {
         driver.switchTo().frame(googleFrame);
-        new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(computeEngineBlock))
-        .click();
+        fillFieldsWithClick(computeEngineBlock);
         driver.switchTo().defaultContent();
         return this;
     }
@@ -101,13 +100,10 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().frame(googleFrame);
         if(addGPUsCheckbox.getAttribute("aria-disabled").equals("false")) {
             if(!addGPUsCheckbox.isSelected()) {
-                new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(addGPUsCheckbox));
-                JavascriptExecutor executor = (JavascriptExecutor) driver;
-                executor.executeScript("arguments[0].click();", addGPUsCheckbox);
+                fillFieldsWithClick(addGPUsCheckbox);
             }
-            driver.findElement(By.xpath("//md-select[contains(@ng-model, 'computeServer.gpuCount')]"))
-                    .sendKeys("1");
-            fillFieldsWithDroppedList(driver, gpuTypeSelect, By.xpath("//md-option[contains(@value,'TESLA_V100')]"));
+            fillFieldsWithSendKeysValue(numberOfGPUs, "1");
+            fillFieldsWithDroppedList(gpuTypeSelect, By.xpath("//md-option[contains(@value,'TESLA_V100')]"));
         }
         driver.switchTo().defaultContent();
         return this;
@@ -133,9 +129,6 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     public CloudPricingCalcPage pressAddToEstimateButton() {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithClick(addToEstimateButton);
-        new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(addToEstimateButton));
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", addToEstimateButton);
         driver.switchTo().defaultContent();
         return this;
     }
@@ -159,19 +152,6 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     }
 
 
-    private void fillFieldsWithDroppedList(WebElement element, By by) {
-        new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element));
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", element);
-        executor.executeScript("arguments[0].click();", driver.findElement(by));
-    }
-    private void fillFieldsWithSendKeysValue(WebElement element, String key) {
-        new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element))
-                .sendKeys(key);
-    }
-    public void fillFieldsWithClick(WebElement element) {
-        new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element));
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", element);
-    }
+
+
 }
