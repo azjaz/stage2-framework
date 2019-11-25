@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 public class TestCommonConditions {
     protected WebDriver driver;
     private static final String RESOURCE_PATH = "src\\main\\resources\\";
+    protected String termToSearch = "Google Cloud Platform Pricing Calculator";
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetUp() {
