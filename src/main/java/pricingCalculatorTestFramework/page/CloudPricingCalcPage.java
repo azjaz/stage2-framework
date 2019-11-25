@@ -49,8 +49,6 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     @FindBy(xpath = "//form[@name='ComputeEngineForm']//button[contains(text(),'Add') and contains(text(),'Estimate')]")
     private WebElement addToEstimateButton;
 
-    @FindBy(xpath = "//button[contains(@aria-label,'Email') and contains(., 'Estimate')]")
-    private WebElement emailEstimateButton;
 
 
     public CloudPricingCalcPage(WebDriver driver) {
@@ -129,22 +127,7 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return this;
     }
-    public String[] getTotalCostFromCalculator() {
-        driver.switchTo().frame(googleFrame);
-        String totalCostValue = driver.findElement(By.xpath("//h2[@class='md-title']/b")).getText();
-        driver.switchTo().defaultContent();
-        return totalCostValue.split(" ");
-    }
 
-
-
-
-    public TemporaryEmailServicePage pressEmailEstimateButton() {
-        driver.switchTo().frame(googleFrame);
-        fillFieldsWithClick(emailEstimateButton);
-        driver.switchTo().defaultContent();
-        return new TemporaryEmailServicePage(driver);
-    }
 
 
 

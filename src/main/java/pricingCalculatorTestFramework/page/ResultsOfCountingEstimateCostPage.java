@@ -17,6 +17,9 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
 
     List<String> openedTabs;
 
+    @FindBy(xpath = "//button[contains(@aria-label,'Email') and contains(., 'Estimate')]")
+    private WebElement emailEstimateButton;
+
     @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
     private WebElement googleFrame;
 
@@ -36,7 +39,19 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+    public String[] getTotalCostFromCalculator() {
+        driver.switchTo().frame(googleFrame);
+        String totalCostValue = driver.findElement(By.xpath("//h2[@class='md-title']/b")).getText();
+        driver.switchTo().defaultContent();
+        return totalCostValue.split(" ");
+    }
 
+    public ResultsOfCountingEstimateCostPage pressEmailEstimateButton() {
+        driver.switchTo().frame(googleFrame);
+        fillFieldsWithClick(emailEstimateButton);
+        driver.switchTo().defaultContent();
+        return new ResultsOfCountingEstimateCostPage(driver);
+    }
     public ResultsOfCountingEstimateCostPage fillEmailField() {
         ((JavascriptExecutor) driver).executeScript(String.format("window.open('%s');", EMAIL_CREATOR_PAGE));
         openedTabs = new ArrayList<>(driver.getWindowHandles());
