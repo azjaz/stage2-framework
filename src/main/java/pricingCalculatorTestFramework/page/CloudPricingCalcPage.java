@@ -1,17 +1,14 @@
 package pricingCalculatorTestFramework.page;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 
 public class CloudPricingCalcPage extends AbstractCorePage {
-
 
     @FindBy(xpath = "//md-tab-item/div[contains(@class,'compute')]")
     private WebElement computeEngineBlock;
@@ -144,9 +141,7 @@ public class CloudPricingCalcPage extends AbstractCorePage {
 
     public TemporaryEmailServicePage pressEmailEstimateButton() {
         driver.switchTo().frame(googleFrame);
-        new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(emailEstimateButton));
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", emailEstimateButton);
+        fillFieldsWithClick(emailEstimateButton);
         driver.switchTo().defaultContent();
         return new TemporaryEmailServicePage(driver);
     }

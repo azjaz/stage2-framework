@@ -55,9 +55,7 @@ public class TemporaryEmailServicePage extends AbstractCorePage {
     }
     public TemporaryEmailServicePage pressSendEmailButton() {
         driver.switchTo().frame(googleFrame);
-        new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(sendEmailButton));
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", sendEmailButton);
+        fillFieldsWithClick(sendEmailButton);
         driver.switchTo().defaultContent();
         return this;
 
@@ -65,10 +63,7 @@ public class TemporaryEmailServicePage extends AbstractCorePage {
 
     public TemporaryEmailServicePage spinMessageList() {
         driver.switchTo().window(openedTabs.get(1));
-        new WebDriverWait(driver, DRIVER_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(messageList));
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", messageList);
+        fillFieldsWithClick(messageList);
         return this;
     }
 
