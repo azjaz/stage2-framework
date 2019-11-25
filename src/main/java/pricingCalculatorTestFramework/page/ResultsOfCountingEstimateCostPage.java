@@ -84,4 +84,5 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
                 .getText();
         return costFromEmail.split(" ");
     }
+
 }
