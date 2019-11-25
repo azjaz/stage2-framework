@@ -84,5 +84,10 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
                 .getText();
         return costFromEmail.split(" ");
     }
-
+    public boolean isTotalCostCalculated() {
+        driver.switchTo().frame(googleFrame);
+        List<WebElement> totalCostCalculated = driver.findElements(By.xpath("//h2[@class='md-title']/b"));
+        driver.switchTo().defaultContent();
+        return totalCostCalculated.size() > 0;
+    }
 }
