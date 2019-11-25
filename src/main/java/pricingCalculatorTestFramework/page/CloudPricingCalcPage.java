@@ -144,7 +144,12 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return new EstimatePriceForCloudPage(driver);
     }
-
+    public String[] getTotalCostFromCalculator() {
+        driver.switchTo().frame(googleFrame);
+        String totalCostValue = driver.findElement(By.xpath("//h2[@class='md-title']/b")).getText();
+        driver.switchTo().defaultContent();
+        return totalCostValue.split(" ");
+    }
 
 
 

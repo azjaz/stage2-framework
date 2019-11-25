@@ -20,6 +20,12 @@ public class GoogleHomePage extends AbstractCorePage {
     @FindBy(xpath = "//div[@class='gs-title']//a[@href='https://cloud.google.com/products/calculator/']/b[text()='Google Cloud Platform Pricing Calculator']")
     private WebElement searchResult;
 
+    @FindBy(xpath = "//a[contains(@class,'cloud-free-trial-button')]")
+    private WebElement getStartedForFreeButton;
+
+    @FindBy(xpath = "//a[@data-label='Sign in button']")
+    private WebElement enterViaGoogleAccount;
+
     public GoogleHomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
@@ -42,5 +48,13 @@ public class GoogleHomePage extends AbstractCorePage {
         wait.until(ExpectedConditions.elementToBeClickable(searchResult))
                 .click();
         return new CloudPricingCalcPage(driver);
+    }
+    public GoogleAccountLoginPage pressGetStartedForFreeButton() {
+        getStartedForFreeButton.click();
+        return new GoogleAccountLoginPage(driver);
+    }
+    public GoogleAccountLoginPage loginToGoogleAccount() {
+        enterViaGoogleAccount.click();
+        return new GoogleAccountLoginPage(driver);
     }
 }
