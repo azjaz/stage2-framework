@@ -136,13 +136,13 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return this;
     }
-    public EstimatePriceForCloudPage pressAddToEstimateButton() {
+    public CloudPricingCalcPage pressAddToEstimateButton() {
         driver.switchTo().frame(googleFrame);
         new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(addToEstimateButton));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", addToEstimateButton);
         driver.switchTo().defaultContent();
-        return new EstimatePriceForCloudPage(driver);
+        return this;
     }
     public String[] getTotalCostFromCalculator() {
         driver.switchTo().frame(googleFrame);
