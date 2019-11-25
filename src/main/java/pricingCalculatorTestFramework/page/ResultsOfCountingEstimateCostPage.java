@@ -14,8 +14,7 @@ import java.util.List;
 
 public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
 
-
-    List<String> openedTabs;
+    private List<String> openedTabs;
 
     @FindBy(xpath = "//button[contains(@aria-label,'Email') and contains(., 'Estimate')]")
     private WebElement emailEstimateButton;
@@ -56,15 +55,13 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         ((JavascriptExecutor) driver).executeScript(String.format("window.open('%s');", EMAIL_CREATOR_PAGE));
         openedTabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(openedTabs.get(1));
-        new WebDriverWait(driver, DRIVER_TIMEOUT)
-                .until(ExpectedConditions.visibilityOf(emailAddress));
-        String emailToPaste = emailAddress.getAttribute("value");
-
+        String emailToPaste = new WebDriverWait(driver, DRIVER_TIMEOUT)
+                .until(ExpectedConditions.visibilityOf(emailAddress))
+                .getAttribute("value");
         driver.switchTo().window(openedTabs.get(0));
 
         driver.switchTo().frame(googleFrame);
-        driver.findElement(By.xpath("//form[@name='emailForm']//input[@type='email']"))
-                .sendKeys(emailToPaste);
+        fillFieldsWithSendKeysValue(driver.findElement(By.xpath("//form[@name='emailForm']//input[@type='email']")), emailToPaste);
         driver.switchTo().defaultContent();
         return this;
     }
@@ -73,7 +70,6 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         fillFieldsWithClick(sendEmailButton);
         driver.switchTo().defaultContent();
         return this;
-
     }
 
     public ResultsOfCountingEstimateCostPage spinMessageList() {

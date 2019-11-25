@@ -49,8 +49,6 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     @FindBy(xpath = "//form[@name='ComputeEngineForm']//button[contains(text(),'Add') and contains(text(),'Estimate')]")
     private WebElement addToEstimateButton;
 
-
-
     public CloudPricingCalcPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -121,15 +119,11 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage pressAddToEstimateButton() {
+    public ResultsOfCountingEstimateCostPage pressAddToEstimateButton() {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithClick(addToEstimateButton);
         driver.switchTo().defaultContent();
-        return this;
+        return new ResultsOfCountingEstimateCostPage(driver);
     }
-
-
-
-
 
 }
