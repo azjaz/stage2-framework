@@ -68,32 +68,33 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         return this;
     }
     public CloudPricingCalcPage fillNumberOfInstancesField()  {
-        fillFieldsWithSendKeysValue(numberOfInstances, "4");
         driver.switchTo().frame(googleFrame);
-        new WebDriverWait(driver, DRIVER_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(numberOfInstances))
-                .sendKeys("4");
+        fillFieldsWithSendKeysValue(numberOfInstances, "4");
         driver.switchTo().defaultContent();
         return this;
     }
     public CloudPricingCalcPage fillPurposeOfInstancesBlock() {
         driver.switchTo().frame(googleFrame);
-        new WebDriverWait(driver, DRIVER_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(purposeOfInstances))
-                .sendKeys("");
+        fillFieldsWithSendKeysValue(purposeOfInstances, "");
         driver.switchTo().defaultContent();
         return this;
     }
     public CloudPricingCalcPage chooseSoftwareBlock() {
+        driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(softwareType, By.xpath("//md-option[contains(@value,'free')]"));
+        driver.switchTo().defaultContent();
         return this;
     }
     public CloudPricingCalcPage chooseVMachineClassBlock() {
+        driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(vMachineClass, By.xpath("//md-option[contains(@id,'select_option_67')]"));
+        driver.switchTo().defaultContent();
         return this;
     }
     public CloudPricingCalcPage chooseMachineTypeBlock() {
+        driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(vMachineType, By.xpath("//md-option[contains(@value,'STANDARD-8')]"));
+        driver.switchTo().defaultContent();
         return this;
     }
     public CloudPricingCalcPage chooseGPUTypeBlock() {
@@ -112,19 +113,26 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         return this;
     }
     public CloudPricingCalcPage chooseLocalSSDBlock() {
+        driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(localSSDSize, By.xpath("//md-option[contains(@id,'select_option_172')]"));
+        driver.switchTo().defaultContent();
         return this;
     }
     public CloudPricingCalcPage chooseDatacenterLocationBlock() {
+        driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(datacenterLocation, By.xpath("//md-option[contains(@id,'select_option_185')]"));
+        driver.switchTo().defaultContent();
         return this;
     }
     public CloudPricingCalcPage chooseCommittedUsageBlock() {
+        driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(committedUsageTerm, By.xpath("//md-option[contains(@id,'select_option_83')]"));
+        driver.switchTo().defaultContent();
         return this;
     }
     public CloudPricingCalcPage pressAddToEstimateButton() {
         driver.switchTo().frame(googleFrame);
+        fillFieldsWithClick(addToEstimateButton);
         new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(addToEstimateButton));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", addToEstimateButton);
@@ -152,18 +160,18 @@ public class CloudPricingCalcPage extends AbstractCorePage {
 
 
     private void fillFieldsWithDroppedList(WebElement element, By by) {
-        driver.switchTo().frame(googleFrame);
         new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
         executor.executeScript("arguments[0].click();", driver.findElement(by));
-        driver.switchTo().defaultContent();
     }
     private void fillFieldsWithSendKeysValue(WebElement element, String key) {
-        driver.switchTo().frame(googleFrame);
         new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element))
                 .sendKeys(key);
-        driver.switchTo().defaultContent();
     }
-
+    public void fillFieldsWithClick(WebElement element) {
+        new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element));
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", element);
+    }
 }
