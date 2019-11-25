@@ -23,8 +23,11 @@ public class GoogleHomePage extends AbstractCorePage {
     @FindBy(xpath = "//a[contains(@class,'cloud-free-trial-button')]")
     private WebElement getStartedForFreeButton;
 
-    @FindBy(xpath = "//a[@data-label='Sign in button']")
-    private WebElement enterViaGoogleAccount;
+    @FindBy(xpath = "//a[@data-label='Tab: Getting started']")
+    private WebElement gettingStartedLink;
+
+//    @FindBy(xpath = "//a[@data-label='Sign in button']")
+//    private WebElement enterViaGoogleAccount;
 
     public GoogleHomePage(WebDriver driver) {
         super(driver);
@@ -53,8 +56,15 @@ public class GoogleHomePage extends AbstractCorePage {
         getStartedForFreeButton.click();
         return new GoogleAccountLoginPage(driver);
     }
-    public GoogleAccountLoginPage loginToGoogleAccount() {
-        enterViaGoogleAccount.click();
+    public GoogleAccountLoginPage pressGettingStartedLink() {
+        gettingStartedLink.click();
+        new WebDriverWait(driver, DRIVER_TIMEOUT)
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@track-name='console']/span")))
+                .click();
         return new GoogleAccountLoginPage(driver);
     }
+//    public GoogleAccountLoginPage loginToGoogleAccount() {
+//        enterViaGoogleAccount.click();
+//        return new GoogleAccountLoginPage(driver);
+//    }
 }

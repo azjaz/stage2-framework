@@ -12,7 +12,9 @@ public class UserAccessTests extends TestCommonConditions{
                 .openPage()
                 .pressGetStartedForFreeButton()
                 .inputEmailForLoginToGoogle(USER_EMAIL)
-                .inputPasswordForLoginPageGoogle(USER_PASSWORD);
+                .inputPasswordForLoginPageGoogle(USER_PASSWORD)
+                .pressGetTrialButton()
+                .presenceOfCheckBoxWithTerms();
 
     }
 
