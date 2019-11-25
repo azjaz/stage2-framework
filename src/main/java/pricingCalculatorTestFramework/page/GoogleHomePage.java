@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class GoogleHomePage extends AbstractCorePage {
 
 
-
     @FindBy(xpath = "//div[@id='searchbox']/input[@name='q']")
     private WebElement searchInput;
 

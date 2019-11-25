@@ -13,8 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CloudPricingCalcPage extends AbstractCorePage {
 
 
-    @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
-    private WebElement googleFrame;
+//    @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
+//    private WebElement googleFrame;
 
     @FindBy(xpath = "//md-tab-item/div[contains(@class,'compute')]")
     private WebElement computeEngineBlock;
@@ -164,11 +164,16 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     }
 
 
-    private void fillFieldsWithDroppedList(WebDriver driver, WebElement element, By by) {
+    private void fillFieldsWithDroppedList(WebElement element, By by) {
+        driver.switchTo().frame(googleFrame);
         new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
         executor.executeScript("arguments[0].click();", driver.findElement(by));
+        driver.switchTo().defaultContent();
+    }
+    private void fillFieldsWithSendKeysValue(WebDriver driver, WebElement element, String key) {
+
     }
 
 }
