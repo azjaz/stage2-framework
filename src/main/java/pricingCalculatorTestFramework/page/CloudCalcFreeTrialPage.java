@@ -22,8 +22,5 @@ public class CloudCalcFreeTrialPage extends AbstractCorePage {
 
 
 
-    public List<WebElement> presenceOfCheckBoxWithTerms() {
-        return new WebDriverWait(driver, DRIVER_TIMEOUT)
-                .until(ExpectedConditions.presenceOfAllElementsLocatedBy(termsCheckBox));
-    }
+
 }

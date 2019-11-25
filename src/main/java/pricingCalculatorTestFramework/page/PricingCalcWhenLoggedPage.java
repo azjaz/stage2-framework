@@ -5,8 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class PricingCalcWhenLoggedPage extends AbstractCorePage {
+
+    private final By termsCheckBox = By.xpath("//label[@class='mat-checkbox-layout']//a[contains(@href, 'terms/free-trial')]");
 
     @FindBy(xpath = "//div[@class='cfc-getting-started-top-content']//button")
     private WebElement tryFreeTrialButton;
@@ -19,7 +25,8 @@ public class PricingCalcWhenLoggedPage extends AbstractCorePage {
         tryFreeTrialButton.click();
         return new CloudCalcFreeTrialPage(driver);
     }
-    public PricingCalcWhenLoggedPage pressEnterToConsoleLink() {
-
+    public List<WebElement> presenceOfCheckBoxWithTerms() {
+        return new WebDriverWait(driver, DRIVER_TIMEOUT)
+                .until(ExpectedConditions.presenceOfAllElementsLocatedBy(termsCheckBox));
     }
 }
