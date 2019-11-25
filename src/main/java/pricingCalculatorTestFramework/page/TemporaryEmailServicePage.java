@@ -14,7 +14,7 @@ import java.util.List;
 
 public class TemporaryEmailServicePage extends AbstractCorePage {
 
-    private final String EMAIL_CREATOR_PAGE = "https://10minutemail.com";
+
     List<String> openedTabs;
 
     @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")

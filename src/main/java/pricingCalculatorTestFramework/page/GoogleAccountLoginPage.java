@@ -24,9 +24,9 @@ public class GoogleAccountLoginPage extends AbstractCorePage {
         formForEmailOrPhoneLogin.sendKeys(Keys.ENTER);
         return this;
     }
-    public PricingCalcWhenLoggedPage inputPasswordForLoginPageGoogle(String legalPassword) {
+    public GetTrialForFreePage inputPasswordForLoginPageGoogle(String legalPassword) {
         formForPasswordLogin.sendKeys(legalPassword);
         formForPasswordLogin.sendKeys(Keys.ENTER);
-        return new PricingCalcWhenLoggedPage(driver);
+        return new GetTrialForFreePage(driver);
     }
 }

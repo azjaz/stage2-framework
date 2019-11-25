@@ -8,6 +8,9 @@ import org.testng.annotations.BeforeMethod;
 public class TestCommonConditions {
     protected WebDriver driver;
     private static final String RESOURCE_PATH = "src\\main\\resources\\";
+    protected static final String USER_EMAIL = "testuserattraining@gmail.com";
+    protected static final String USER_PASSWORD = "Pass1234!";
+    protected static final String REGEX_ESTIMATED_COST_SUM = "\\d?.?\\d+\\.\\d+";
     protected String termToSearch = "Google Cloud Platform Pricing Calculator";
 
     @BeforeMethod(alwaysRun = true)

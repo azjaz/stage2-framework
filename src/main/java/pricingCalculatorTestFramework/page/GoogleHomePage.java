@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleHomePage extends AbstractCorePage {
 
-    private static final String HOMEPAGE_URL = "https://cloud.google.com/";
+
 
     @FindBy(xpath = "//div[@id='searchbox']/input[@name='q']")
     private WebElement searchInput;

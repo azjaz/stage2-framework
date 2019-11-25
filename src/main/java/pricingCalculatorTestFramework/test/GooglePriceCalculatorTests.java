@@ -7,7 +7,7 @@ import pricingCalculatorTestFramework.page.GoogleHomePage;
 
 public class GooglePriceCalculatorTests extends TestCommonConditions {
     private String termToSearch = "Google Cloud Platform Pricing Calculator";
-    String regExForCheckedValue = "\\d?.?\\d+\\.\\d+";
+
 
     @Test
     public void correspondenceOfTotalCostTest() {
