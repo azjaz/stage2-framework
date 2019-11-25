@@ -45,6 +45,7 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
         Assert.assertEquals(totalCostFromCalculator, totalCostFromMail);
 
     }
+
     @Test
     public void presenceOfTotalCostOnPageTest() {
         boolean presenceOfTotalCostOnPage = new GoogleHomePage(driver)
