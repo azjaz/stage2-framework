@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TemporaryEmailServicePage extends AbstractCorePage {
+public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
 
 
     List<String> openedTabs;
@@ -32,12 +32,12 @@ public class TemporaryEmailServicePage extends AbstractCorePage {
     @FindBy(xpath = "//div[@id='Email']//table[@class='table']//h2")
     private WebElement totalCostInLetter;
 
-    public TemporaryEmailServicePage(WebDriver driver) {
+    public ResultsOfCountingEstimateCostPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public TemporaryEmailServicePage fillEmailField() {
+    public ResultsOfCountingEstimateCostPage fillEmailField() {
         ((JavascriptExecutor) driver).executeScript(String.format("window.open('%s');", EMAIL_CREATOR_PAGE));
         openedTabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(openedTabs.get(1));
@@ -53,7 +53,7 @@ public class TemporaryEmailServicePage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return this;
     }
-    public TemporaryEmailServicePage pressSendEmailButton() {
+    public ResultsOfCountingEstimateCostPage pressSendEmailButton() {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithClick(sendEmailButton);
         driver.switchTo().defaultContent();
@@ -61,7 +61,7 @@ public class TemporaryEmailServicePage extends AbstractCorePage {
 
     }
 
-    public TemporaryEmailServicePage spinMessageList() {
+    public ResultsOfCountingEstimateCostPage spinMessageList() {
         driver.switchTo().window(openedTabs.get(1));
         fillFieldsWithClick(messageList);
         return this;
@@ -71,7 +71,6 @@ public class TemporaryEmailServicePage extends AbstractCorePage {
         String costFromEmail = new WebDriverWait(driver, DRIVER_TIMEOUT)
                 .until(ExpectedConditions.visibilityOf(totalCostInLetter))
                 .getText();
-
         return costFromEmail.split(" ");
     }
 }
