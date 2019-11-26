@@ -7,7 +7,7 @@ import pricingCalculatorTestFramework.page.GoogleHomePage;
 
 import java.util.List;
 
-public class UserAccessTests extends TestCommonConditions{
+public class UserAccessTests extends TestCommonConditions {
 
     @Test
     public void openFreeTrialViaButtonTest() {
@@ -16,7 +16,6 @@ public class UserAccessTests extends TestCommonConditions{
                 .pressGetStartedForFreeButton()
                 .inputEmailForLoginToGoogle(USER_EMAIL)
                 .inputPasswordForLoginPageGoogle(USER_PASSWORD)
-                .pressGetTrialButton()
                 .presenceOfCheckBoxWithTerms();
         Assert.assertTrue(confirmTermsForFreeTrial.size() > 0, "Can't use for Free trial");
 

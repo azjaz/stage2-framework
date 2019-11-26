@@ -16,11 +16,13 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
 
     private List<String> openedTabs;
 
+    @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
+    private WebElement googleFrame;
+//    protected WebElement googleFrame = driver.findElement(By.xpath("//iframe[contains(@src,'cloudpricingcalculator')]"));
     @FindBy(xpath = "//button[contains(@aria-label,'Email') and contains(., 'Estimate')]")
     private WebElement emailEstimateButton;
 
-    @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
-    private WebElement googleFrame;
+
 
     @FindBy(xpath = "//button[contains(@aria-label,'Send') and contains(., 'Email')]")
     WebElement sendEmailButton;

@@ -9,6 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class CloudPricingCalcPage extends AbstractCorePage {
+//    protected WebElement googleFrame = driver.findElement(By.xpath("//iframe[contains(@src,'cloudpricingcalculator')]"));
+    @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
+    private WebElement googleFrame;
 
     @FindBy(xpath = "//md-tab-item/div[contains(@class,'compute')]")
     private WebElement computeEngineBlock;

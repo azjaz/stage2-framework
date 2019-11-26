@@ -22,7 +22,8 @@ public class GetTrialForFreePage extends AbstractCorePage {
         PageFactory.initElements(this.driver, this);
     }
     public GetTrialForFreePage pressGetTrialButton() {
-        tryFreeTrialButton.click();
+        fillFieldsWithClick(tryFreeTrialButton);
+//        tryFreeTrialButton.click();
         return this;
     }
     public List<WebElement> presenceOfCheckBoxWithTerms() {
