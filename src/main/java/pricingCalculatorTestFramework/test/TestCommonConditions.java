@@ -4,10 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pricingCalculatorTestFramework.driver.DriverSingleton;
 
 public class TestCommonConditions {
     protected WebDriver driver;
-    private static final String RESOURCE_PATH = "src\\main\\resources\\";
     protected static final String USER_EMAIL = "testuserattraining@gmail.com";
     protected static final String USER_PASSWORD = "Pass1234!";
     protected static final String REGEX_ESTIMATED_COST_SUM = "\\d?.?\\d+\\.\\d+";
@@ -15,15 +15,11 @@ public class TestCommonConditions {
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetUp() {
-        System.setProperty("webdriver.chrome.driver", RESOURCE_PATH + "chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-
+        driver = DriverSingleton.getDriver();
     }
 
     @AfterMethod(alwaysRun = true)
     public void browserTermination() {
-        driver.quit();
-        driver = null;
+        DriverSingleton.closeDriver();
     }
 }
