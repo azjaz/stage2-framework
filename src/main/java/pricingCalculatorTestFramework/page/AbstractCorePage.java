@@ -12,7 +12,7 @@ public class AbstractCorePage {
 
     protected static final String HOMEPAGE_URL = "https://cloud.google.com/";
     protected static final String EMAIL_CREATOR_PAGE = "https://10minutemail.com";
-    protected final int DRIVER_TIMEOUT = 15;
+    protected final int DRIVER_TIMEOUT = 30;
     protected WebDriver driver;
 
 
