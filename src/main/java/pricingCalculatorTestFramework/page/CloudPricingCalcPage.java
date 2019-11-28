@@ -62,9 +62,9 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage fillNumberOfInstancesField(WebElement numberOfInstances, String number)  {
+    public CloudPricingCalcPage fillNumberOfInstancesField(WebElement instancesNumber, String number)  {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithSendKeysValue(numberOfInstances, number);
+        fillFieldsWithSendKeysValue(instancesNumber, number);
         driver.switchTo().defaultContent();
         return this;
     }

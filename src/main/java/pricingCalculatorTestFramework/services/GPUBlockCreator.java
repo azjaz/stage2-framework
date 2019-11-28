@@ -9,10 +9,10 @@ import org.openqa.selenium.support.FindBy;
 public class GPUBlockCreator {
 
     @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuCount')]")
-    private static WebElement numberOfGPUs;
+    public static WebElement numberOfGPUs;
 
     @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuType')]")
-    private static WebElement gpuTypeSelect;
+    public static WebElement gpuTypeSelect;
 
     public static void createGPUConfig(WebDriver driver, String number, By type) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
