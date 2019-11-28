@@ -17,7 +17,7 @@ public class BasicConfiguration extends VirtualMachine {
     protected By vmType = By.xpath("//md-option[contains(@value,'STANDARD-8')]");
     protected String numberOfGPUs = "1";
     protected By typeOfGPU = By.xpath("//md-option[contains(@value,'TESLA_V100')]");
-    protected By localSSDsize = By.xpath("//md-option[contains(@id,'select_option_172')]");
-    protected By dataCenterLocation = By.xpath("//md-option[contains(@id,'select_option_185')]");
-    protected By committedUsage = By.xpath("//md-option[contains(@id,'select_option_83')]");
+    protected By SSDsize = By.xpath("//md-option[contains(@id,'select_option_172')]");
+    protected By dataCenter = By.xpath("//md-option[contains(@id,'select_option_185')]");
+    protected By usageTerm = By.xpath("//md-option[contains(@id,'select_option_83')]");
 }

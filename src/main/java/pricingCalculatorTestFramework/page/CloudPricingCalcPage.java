@@ -16,38 +16,38 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     @FindBy(xpath = "//md-tab-item/div[contains(@class,'compute')]")
     private WebElement computeEngineBlock;
 
-    @FindBy(xpath = "//input[@id='input_53']")
-    private WebElement numberOfInstances;
-
-    @FindBy(xpath = "//input[@id='input_54']")
-    private WebElement purposeOfInstances;
-
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_46']")
-    private WebElement softwareType;
-
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_47']")
-    private WebElement vMachineClass;
-
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_49']")
-    private WebElement vMachineType;
-
-    @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
-    private WebElement addGPUsCheckbox;
-
-    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuCount')]")
-    private WebElement numberOfGPUs;
-
-    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuType')]")
-    private WebElement gpuTypeSelect;
-
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
-    private WebElement localSSDSize;
-
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_51']")
-    private WebElement datacenterLocation;
-
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_52']")
-    private WebElement committedUsageTerm;
+//    @FindBy(xpath = "//input[@id='input_53']")
+//    private WebElement numberOfInstances;
+//
+//    @FindBy(xpath = "//input[@id='input_54']")
+//    private WebElement purposeOfInstances;
+//
+//    @FindBy(xpath = "//md-select-value[@id='select_value_label_46']")
+//    private WebElement softwareType;
+//
+//    @FindBy(xpath = "//md-select-value[@id='select_value_label_47']")
+//    private WebElement vMachineClass;
+//
+//    @FindBy(xpath = "//md-select-value[@id='select_value_label_49']")
+//    private WebElement vMachineType;
+//
+//    @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
+//    private WebElement addGPUsCheckbox;
+//
+//    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuCount')]")
+//    private WebElement numberOfGPUs;
+//
+//    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuType')]")
+//    private WebElement gpuTypeSelect;
+//
+//    @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
+//    private WebElement localSSDSize;
+//
+//    @FindBy(xpath = "//md-select-value[@id='select_value_label_51']")
+//    private WebElement datacenterLocation;
+//
+//    @FindBy(xpath = "//md-select-value[@id='select_value_label_52']")
+//    private WebElement committedUsageTerm;
 
     @FindBy(xpath = "//form[@name='ComputeEngineForm']//button[contains(text(),'Add') and contains(text(),'Estimate')]")
     private WebElement addToEstimateButton;
@@ -62,33 +62,33 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage fillNumberOfInstancesField()  {
+    public CloudPricingCalcPage fillNumberOfInstancesField(WebElement numberOfInstances, String number)  {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithSendKeysValue(numberOfInstances, "4");
+        fillFieldsWithSendKeysValue(numberOfInstances, number);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage fillPurposeOfInstancesBlock() {
+    public CloudPricingCalcPage fillPurposeOfInstancesBlock(WebElement purposeOfInstances, String purpose) {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithSendKeysValue(purposeOfInstances, "");
+        fillFieldsWithSendKeysValue(purposeOfInstances, purpose);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseSoftwareBlock() {
+    public CloudPricingCalcPage chooseSoftwareBlock(WebElement softwareType, By type) {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(softwareType, By.xpath("//md-option[contains(@value,'free')]"));
+        fillFieldsWithDroppedList(softwareType, type);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseVMachineClassBlock() {
+    public CloudPricingCalcPage chooseVMachineClassBlock(WebElement vMachineClass, By vmClass) {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(vMachineClass, By.xpath("//md-option[contains(@id,'select_option_67')]"));
+        fillFieldsWithDroppedList(vMachineClass, vmClass);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseMachineTypeBlock() {
+    public CloudPricingCalcPage chooseMachineTypeBlock(WebElement vMachineType, By vmType) {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(vMachineType, By.xpath("//md-option[contains(@value,'STANDARD-8')]"));
+        fillFieldsWithDroppedList(vMachineType, vmType);
         driver.switchTo().defaultContent();
         return this;
     }
@@ -104,21 +104,21 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseLocalSSDBlock() {
+    public CloudPricingCalcPage chooseLocalSSDBlock(WebElement localSSDSize, By SSDSize) {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(localSSDSize, By.xpath("//md-option[contains(@id,'select_option_172')]"));
+        fillFieldsWithDroppedList(localSSDSize, SSDSize);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseDatacenterLocationBlock() {
+    public CloudPricingCalcPage chooseDatacenterLocationBlock(WebElement datacenterLocation, By dataCenter) {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(datacenterLocation, By.xpath("//md-option[contains(@id,'select_option_185')]"));
+        fillFieldsWithDroppedList(datacenterLocation, dataCenter);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseCommittedUsageBlock() {
+    public CloudPricingCalcPage chooseCommittedUsageBlock(WebElement committedUsageTerm, By usageTerm) {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(committedUsageTerm, By.xpath("//md-option[contains(@id,'select_option_83')]"));
+        fillFieldsWithDroppedList(committedUsageTerm, usageTerm);
         driver.switchTo().defaultContent();
         return this;
     }
