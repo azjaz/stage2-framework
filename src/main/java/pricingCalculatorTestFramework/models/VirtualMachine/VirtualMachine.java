@@ -27,14 +27,12 @@ public class VirtualMachine {
     @FindBy(xpath = "//md-select-value[@id='select_value_label_49']")
     protected WebElement vMachineType;
 // gpu
-    @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
-    protected WebElement addGPUsCheckbox;
-
     @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuCount')]")
     protected WebElement numberOfGPUs;
 
     @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuType')]")
     protected WebElement gpuTypeSelect;
+
 // gpu
     @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
     protected WebElement localSSDSize;

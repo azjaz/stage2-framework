@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import pricingCalculatorTestFramework.services.GPUBlockCreator;
 
 
 public class CloudPricingCalcPage extends AbstractCorePage {
@@ -31,8 +31,8 @@ public class CloudPricingCalcPage extends AbstractCorePage {
 //    @FindBy(xpath = "//md-select-value[@id='select_value_label_49']")
 //    private WebElement vMachineType;
 //
-//    @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
-//    private WebElement addGPUsCheckbox;
+    @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
+    protected WebElement addGPUsCheckbox;
 //
 //    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuCount')]")
 //    private WebElement numberOfGPUs;
@@ -92,14 +92,15 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseGPUTypeBlock() {
+    public CloudPricingCalcPage chooseGPUTypeBlock(String numberOfGPUs, By typeOfGPU) {
         driver.switchTo().frame(googleFrame);
         if(addGPUsCheckbox.getAttribute("aria-disabled").equals("false")) {
             if(!addGPUsCheckbox.isSelected()) {
                 fillFieldsWithClick(addGPUsCheckbox);
             }
-            fillFieldsWithSendKeysValue(numberOfGPUs, "1");
-            fillFieldsWithDroppedList(gpuTypeSelect, By.xpath("//md-option[contains(@value,'TESLA_V100')]"));
+            GPUBlockCreator.createGPUConfig(driver, numberOfGPUs, typeOfGPU);
+//            fillFieldsWithSendKeysValue(GPU.getNumberOfGPUs(), );
+//            fillFieldsWithDroppedList(gpuTypeSelect, By.xpath("//md-option[contains(@value,'TESLA_V100')]"));
         }
         driver.switchTo().defaultContent();
         return this;
