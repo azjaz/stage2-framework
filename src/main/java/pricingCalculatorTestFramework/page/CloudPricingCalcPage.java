@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pricingCalculatorTestFramework.models.VirtualMachine.GPUConfig;
 import pricingCalculatorTestFramework.services.GPUBlockCreator;
 
 
@@ -98,9 +99,10 @@ public class CloudPricingCalcPage extends AbstractCorePage {
             if(!addGPUsCheckbox.isSelected()) {
                 fillFieldsWithClick(addGPUsCheckbox);
             }
-            GPUBlockCreator.createGPUConfig(driver, numberOfGPUs, typeOfGPU);
-//            fillFieldsWithSendKeysValue(GPU.getNumberOfGPUs(), );
-//            fillFieldsWithDroppedList(gpuTypeSelect, By.xpath("//md-option[contains(@value,'TESLA_V100')]"));
+            GPUConfig configuraton = new GPUConfig();
+//            GPUBlockCreator.createGPUConfig(driver, numberOfGPUs, typeOfGPU);
+            fillFieldsWithSendKeysValue(driver.findElement(By.xpath(configuraton.getNumberOfGPUs())), numberOfGPUs);
+            fillFieldsWithDroppedList(driver.findElement(By.xpath(configuraton.getGpuTypeSelect())), typeOfGPU);
         }
         driver.switchTo().defaultContent();
         return this;

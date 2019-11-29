@@ -7,26 +7,22 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class VirtualMachine {
-    protected WebDriver driver;
 
-    public VirtualMachine(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-//    @FindBy(xpath = "//input[@id='input_53']")
-    private WebElement numberOfInstances = driver.findElement(By.xpath("//input[@id='input_53']"));
-
-    @FindBy(xpath = "//input[@id='input_54']")
-    private WebElement purposeOfInstances;
-
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_46']")
-    private WebElement softwareType;
-
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_47']")
-    private WebElement vMachineClass;
-
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_49']")
-    private WebElement vMachineType;
+//    protected WebDriver driver;
+//
+//    public VirtualMachine(WebDriver driver) {
+//        this.driver = driver;
+//        PageFactory.initElements(driver, this);
+//    }
+    private String numberOfInstances = "//input[@id='input_53']";
+    private String purposeOfInstances = "//input[@id='input_54']";
+    private String softwareType = "//md-select-value[@id='select_value_label_46']";
+    private String vMachineClass = "//md-select-value[@id='select_value_label_47']";
+    private String vMachineType = "//md-select-value[@id='select_value_label_49']";
+    private String localSSDSize = "//md-select-value[@id='select_value_label_50']";
+    private String datacenterLocation = "//md-select-value[@id='select_value_label_51']";
+    private String committedUsageTerm = "//md-select-value[@id='select_value_label_52']";
+    private String addGPUsCheckbox = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]";
 // gpu
 //    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuCount')]")
 //    protected WebElement numberOfGPUs;
@@ -35,44 +31,41 @@ public class VirtualMachine {
 //    protected WebElement gpuTypeSelect;
 
 // gpu
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
-    private WebElement localSSDSize;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_51']")
-    private WebElement datacenterLocation;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_52']")
-    private WebElement committedUsageTerm;
-
-    public WebElement getNumberOfInstances() {
+    public String getNumberOfInstances() {
         return numberOfInstances;
     }
 
-    public WebElement getPurposeOfInstances() {
+    public String getPurposeOfInstances() {
         return purposeOfInstances;
     }
 
-    public WebElement getSoftwareType() {
+    public String getSoftwareType() {
         return softwareType;
     }
 
-    public WebElement getvMachineClass() {
+    public String getvMachineClass() {
         return vMachineClass;
     }
 
-    public WebElement getvMachineType() {
+    public String getvMachineType() {
         return vMachineType;
     }
 
-    public WebElement getLocalSSDSize() {
+    public String getLocalSSDSize() {
         return localSSDSize;
     }
 
-    public WebElement getDatacenterLocation() {
+    public String getDatacenterLocation() {
         return datacenterLocation;
     }
 
-    public WebElement getCommittedUsageTerm() {
+    public String getCommittedUsageTerm() {
         return committedUsageTerm;
+    }
+
+    public String getAddGPUsCheckbox() {
+        return addGPUsCheckbox;
     }
 }

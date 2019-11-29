@@ -6,9 +6,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BasicConfiguration extends VirtualMachine {
 
-    public BasicConfiguration(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(this.driver, this);
+    public BasicConfiguration() {
+        super();
+
     }
     private String instancesNumber = "4";
     private String purposeOfVMachine = "Web";
@@ -22,43 +22,5 @@ public class BasicConfiguration extends VirtualMachine {
     protected By usageTerm = By.xpath("//md-option[contains(@id,'select_option_83')]");
 
 
-    public String getInstancesNumber() {
-        return instancesNumber;
-    }
 
-    public String getPurposeOfVMachine() {
-        return purposeOfVMachine;
-    }
-
-    public By getOperatingSystem() {
-        return operatingSystem;
-    }
-
-    public By getVmClass() {
-        return vmClass;
-    }
-
-    public By getVmType() {
-        return vmType;
-    }
-
-    public String getNumberOfGPUs() {
-        return numberOfGPUs;
-    }
-
-    public By getTypeOfGPU() {
-        return typeOfGPU;
-    }
-
-    public By getSSDsize() {
-        return SSDsize;
-    }
-
-    public By getDataCenter() {
-        return dataCenter;
-    }
-
-    public By getUsageTerm() {
-        return usageTerm;
-    }
 }
