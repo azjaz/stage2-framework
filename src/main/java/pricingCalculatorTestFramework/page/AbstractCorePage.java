@@ -25,11 +25,11 @@ public class AbstractCorePage {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
     }
-    protected void fillFieldsWithDroppedList(WebElement element, By by) {
+    protected void fillFieldsWithDroppedList(WebElement element, String itemXpath) {
         new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
-        executor.executeScript("arguments[0].click();", driver.findElement(by));
+        executor.executeScript("arguments[0].click();", driver.findElement(By.xpath(itemXpath)));
     }
     protected void fillFieldsWithSendKeysValue(WebElement element, String key) {
         new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element))

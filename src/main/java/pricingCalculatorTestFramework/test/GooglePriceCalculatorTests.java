@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 
 public class GooglePriceCalculatorTests extends TestCommonConditions {
-    BasicConfiguration baseConf = VirtualMachineCreator.createBasicConfiguration();
+    BasicConfiguration baseConf = new BasicConfiguration();
     @Test
     public void correspondenceOfTotalCostOnPageAndMailTest() {
 
@@ -22,15 +22,15 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .searchForTerm(termToSearch)
                 .clickOnRequiredLink()
                 .activateComputeEngineBlock()
-                .fillNumberOfInstancesField(baseConf.getNumberOfInstances(), baseConf.getInstancesNumber())
-                .fillPurposeOfInstancesBlock(baseConf.getPurposeOfInstances(), baseConf.getPurposeOfVMachine())
-                .chooseSoftwareBlock(baseConf.getSoftwareType(), baseConf.getOperatingSystem())
-                .chooseVMachineClassBlock(baseConf.getvMachineClass(), baseConf.getVmClass())
-                .chooseMachineTypeBlock(baseConf.getvMachineType(), baseConf.getVmType())
+                .fillNumberOfInstancesField(baseConf.getInstancesNumber())
+                .fillPurposeOfInstancesBlock(baseConf.getPurposeOfVMachine())
+                .chooseSoftwareBlock(baseConf.getOperatingSystem())
+                .chooseVMachineClassBlock(baseConf.getVmClass())
+                .chooseMachineTypeBlock(baseConf.getVmType())
                 .chooseGPUTypeBlock(baseConf.getNumberOfGPUs(), baseConf.getTypeOfGPU())
-                .chooseLocalSSDBlock(baseConf.getLocalSSDSize(), baseConf.getSSDsize())
-                .chooseDatacenterLocationBlock(baseConf.getDatacenterLocation(), baseConf.getDataCenter())
-                .chooseCommittedUsageBlock(baseConf.getCommittedUsageTerm(), baseConf.getUsageTerm())
+                .chooseLocalSSDBlock(baseConf.getSSDsize())
+                .chooseDatacenterLocationBlock(baseConf.getDataCenter())
+                .chooseCommittedUsageBlock(baseConf.getUsageTerm())
                 .pressAddToEstimateButton();
 
         String totalCostFromCalculator = Arrays.stream(testPage.getTotalCostFromCalculator())
@@ -57,15 +57,15 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .searchForTerm(termToSearch)
                 .clickOnRequiredLink()
                 .activateComputeEngineBlock()
-                .fillNumberOfInstancesField(baseConf.getNumberOfInstances(), baseConf.getInstancesNumber())
-                .fillPurposeOfInstancesBlock(baseConf.getPurposeOfInstances(), baseConf.getPurposeOfVMachine())
-                .chooseSoftwareBlock(baseConf.getSoftwareType(), baseConf.getOperatingSystem())
-                .chooseVMachineClassBlock(baseConf.getvMachineClass(), baseConf.getVmClass())
-                .chooseMachineTypeBlock(baseConf.getvMachineType(), baseConf.getVmType())
+                .fillNumberOfInstancesField(baseConf.getInstancesNumber())
+                .fillPurposeOfInstancesBlock(baseConf.getPurposeOfVMachine())
+                .chooseSoftwareBlock(baseConf.getOperatingSystem())
+                .chooseVMachineClassBlock(baseConf.getVmClass())
+                .chooseMachineTypeBlock(baseConf.getVmType())
                 .chooseGPUTypeBlock(baseConf.getNumberOfGPUs(), baseConf.getTypeOfGPU())
-                .chooseLocalSSDBlock(baseConf.getLocalSSDSize(), baseConf.getSSDsize())
-                .chooseDatacenterLocationBlock(baseConf.getDatacenterLocation(), baseConf.getDataCenter())
-                .chooseCommittedUsageBlock(baseConf.getCommittedUsageTerm(), baseConf.getUsageTerm())
+                .chooseLocalSSDBlock(baseConf.getSSDsize())
+                .chooseDatacenterLocationBlock(baseConf.getDataCenter())
+                .chooseCommittedUsageBlock(baseConf.getUsageTerm())
                 .pressAddToEstimateButton()
                 .isTotalCostCalculated();
         Assert.assertTrue(presenceOfTotalCostOnPage, "Estimated total cost is not calculated!");

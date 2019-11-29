@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pricingCalculatorTestFramework.models.VirtualMachine.GPUConfig;
-import pricingCalculatorTestFramework.services.GPUBlockCreator;
 
 
 public class CloudPricingCalcPage extends AbstractCorePage {
@@ -17,21 +16,21 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     @FindBy(xpath = "//md-tab-item/div[contains(@class,'compute')]")
     private WebElement computeEngineBlock;
 
-//    @FindBy(xpath = "//input[@id='input_53']")
-//    private WebElement numberOfInstances;
-//
-//    @FindBy(xpath = "//input[@id='input_54']")
-//    private WebElement purposeOfInstances;
-//
-//    @FindBy(xpath = "//md-select-value[@id='select_value_label_46']")
-//    private WebElement softwareType;
-//
-//    @FindBy(xpath = "//md-select-value[@id='select_value_label_47']")
-//    private WebElement vMachineClass;
-//
-//    @FindBy(xpath = "//md-select-value[@id='select_value_label_49']")
-//    private WebElement vMachineType;
-//
+    @FindBy(xpath = "//input[@id='input_53']")
+    private WebElement numberOfInstances;
+
+    @FindBy(xpath = "//input[@id='input_54']")
+    private WebElement purposeOfInstances;
+
+    @FindBy(xpath = "//md-select-value[@id='select_value_label_46']")
+    private WebElement softwareType;
+
+    @FindBy(xpath = "//md-select-value[@id='select_value_label_47']")
+    private WebElement vMachineClass;
+
+    @FindBy(xpath = "//md-select-value[@id='select_value_label_49']")
+    private WebElement vMachineType;
+
     @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
     protected WebElement addGPUsCheckbox;
 //
@@ -41,14 +40,14 @@ public class CloudPricingCalcPage extends AbstractCorePage {
 //    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuType')]")
 //    private WebElement gpuTypeSelect;
 //
-//    @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
-//    private WebElement localSSDSize;
-//
-//    @FindBy(xpath = "//md-select-value[@id='select_value_label_51']")
-//    private WebElement datacenterLocation;
-//
-//    @FindBy(xpath = "//md-select-value[@id='select_value_label_52']")
-//    private WebElement committedUsageTerm;
+    @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
+    private WebElement localSSDSize;
+
+    @FindBy(xpath = "//md-select-value[@id='select_value_label_51']")
+    private WebElement datacenterLocation;
+
+    @FindBy(xpath = "//md-select-value[@id='select_value_label_52']")
+    private WebElement committedUsageTerm;
 
     @FindBy(xpath = "//form[@name='ComputeEngineForm']//button[contains(text(),'Add') and contains(text(),'Estimate')]")
     private WebElement addToEstimateButton;
@@ -63,63 +62,62 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage fillNumberOfInstancesField(WebElement instancesNumber, String number)  {
+    public CloudPricingCalcPage fillNumberOfInstancesField(String number)  {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithSendKeysValue(instancesNumber, number);
+        fillFieldsWithSendKeysValue(numberOfInstances, number);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage fillPurposeOfInstancesBlock(WebElement purposeOfInstances, String purpose) {
+    public CloudPricingCalcPage fillPurposeOfInstancesBlock(String purpose) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithSendKeysValue(purposeOfInstances, purpose);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseSoftwareBlock(WebElement softwareType, By type) {
+    public CloudPricingCalcPage chooseSoftwareBlock(String OSType) {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(softwareType, type);
+        fillFieldsWithDroppedList(softwareType, OSType);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseVMachineClassBlock(WebElement vMachineClass, By vmClass) {
+    public CloudPricingCalcPage chooseVMachineClassBlock(String vmClass) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(vMachineClass, vmClass);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseMachineTypeBlock(WebElement vMachineType, By vmType) {
+    public CloudPricingCalcPage chooseMachineTypeBlock(String vmType) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(vMachineType, vmType);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseGPUTypeBlock(String numberOfGPUs, By typeOfGPU) {
+    public CloudPricingCalcPage chooseGPUTypeBlock(String numberOfGPUs, String typeOfGPU) {
         driver.switchTo().frame(googleFrame);
         if(addGPUsCheckbox.getAttribute("aria-disabled").equals("false")) {
             if(!addGPUsCheckbox.isSelected()) {
                 fillFieldsWithClick(addGPUsCheckbox);
             }
-            GPUConfig configuraton = new GPUConfig();
-//            GPUBlockCreator.createGPUConfig(driver, numberOfGPUs, typeOfGPU);
-            fillFieldsWithSendKeysValue(driver.findElement(By.xpath(configuraton.getNumberOfGPUs())), numberOfGPUs);
-            fillFieldsWithDroppedList(driver.findElement(By.xpath(configuraton.getGpuTypeSelect())), typeOfGPU);
+            GPUConfig config = new GPUConfig();
+            fillFieldsWithSendKeysValue(driver.findElement(By.xpath(config.getNumberOfGPUs())), numberOfGPUs);
+            fillFieldsWithDroppedList(driver.findElement(By.xpath(config.getGpuTypeSelect())), typeOfGPU);
         }
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseLocalSSDBlock(WebElement localSSDSize, By SSDSize) {
+    public CloudPricingCalcPage chooseLocalSSDBlock(String SSDSize) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(localSSDSize, SSDSize);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseDatacenterLocationBlock(WebElement datacenterLocation, By dataCenter) {
+    public CloudPricingCalcPage chooseDatacenterLocationBlock(String dataCenter) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(datacenterLocation, dataCenter);
         driver.switchTo().defaultContent();
         return this;
     }
-    public CloudPricingCalcPage chooseCommittedUsageBlock(WebElement committedUsageTerm, By usageTerm) {
+    public CloudPricingCalcPage chooseCommittedUsageBlock(String usageTerm) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(committedUsageTerm, usageTerm);
         driver.switchTo().defaultContent();
