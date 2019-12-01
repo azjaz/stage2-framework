@@ -3,17 +3,20 @@ package pricingCalculatorTestFramework.test;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pricingCalculatorTestFramework.models.VirtualMachine.BasicConfiguration;
-import pricingCalculatorTestFramework.models.VirtualMachine.VirtualMachine;
+//import pricingCalculatorTestFramework.models.VirtualMachine.VirtualMachine;
+import pricingCalculatorTestFramework.models.VirtualMachine.VirtualMachineConfig;
 import pricingCalculatorTestFramework.page.GoogleHomePage;
 import pricingCalculatorTestFramework.page.ResultsOfCountingEstimateCostPage;
 import pricingCalculatorTestFramework.services.VirtualMachineCreator;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class GooglePriceCalculatorTests extends TestCommonConditions {
-    BasicConfiguration baseConf = new BasicConfiguration();
+    VirtualMachineConfig config = VirtualMachineCreator.createConfiguration();
+
     @Test
     public void correspondenceOfTotalCostOnPageAndMailTest() {
 
@@ -22,15 +25,15 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .searchForTerm(termToSearch)
                 .clickOnRequiredLink()
                 .activateComputeEngineBlock()
-                .fillNumberOfInstancesField(baseConf.getInstancesNumber())
-                .fillPurposeOfInstancesBlock(baseConf.getPurposeOfVMachine())
-                .chooseSoftwareBlock(baseConf.getOperatingSystem())
-                .chooseVMachineClassBlock(baseConf.getVmClass())
-                .chooseMachineTypeBlock(baseConf.getVmType())
-                .chooseGPUTypeBlock(baseConf.getNumberOfGPUs(), baseConf.getTypeOfGPU())
-                .chooseLocalSSDBlock(baseConf.getSSDsize())
-                .chooseDatacenterLocationBlock(baseConf.getDataCenter())
-                .chooseCommittedUsageBlock(baseConf.getUsageTerm())
+                .fillNumberOfInstancesField(config.getInstancesNumber())
+                .fillPurposeOfInstancesBlock(config.getPurposeOfVMachine())
+                .chooseSoftwareBlock(config.getOperatingSystem())
+                .chooseVMachineClassBlock(config.getVmClass())
+                .chooseMachineTypeBlock(config.getVmType())
+                .chooseGPUTypeBlock(config.getNumberOfGPUs(), config.getTypeOfGPU())
+                .chooseLocalSSDBlock(config.getSSDsize())
+                .chooseDatacenterLocationBlock(config.getDataCenter())
+                .chooseCommittedUsageBlock(config.getUsageTerm())
                 .pressAddToEstimateButton();
 
         String totalCostFromCalculator = Arrays.stream(testPage.getTotalCostFromCalculator())
@@ -57,15 +60,15 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .searchForTerm(termToSearch)
                 .clickOnRequiredLink()
                 .activateComputeEngineBlock()
-                .fillNumberOfInstancesField(baseConf.getInstancesNumber())
-                .fillPurposeOfInstancesBlock(baseConf.getPurposeOfVMachine())
-                .chooseSoftwareBlock(baseConf.getOperatingSystem())
-                .chooseVMachineClassBlock(baseConf.getVmClass())
-                .chooseMachineTypeBlock(baseConf.getVmType())
-                .chooseGPUTypeBlock(baseConf.getNumberOfGPUs(), baseConf.getTypeOfGPU())
-                .chooseLocalSSDBlock(baseConf.getSSDsize())
-                .chooseDatacenterLocationBlock(baseConf.getDataCenter())
-                .chooseCommittedUsageBlock(baseConf.getUsageTerm())
+                .fillNumberOfInstancesField(config.getInstancesNumber())
+                .fillPurposeOfInstancesBlock(config.getPurposeOfVMachine())
+                .chooseSoftwareBlock(config.getOperatingSystem())
+                .chooseVMachineClassBlock(config.getVmClass())
+                .chooseMachineTypeBlock(config.getVmType())
+                .chooseGPUTypeBlock(config.getNumberOfGPUs(), config.getTypeOfGPU())
+                .chooseLocalSSDBlock(config.getSSDsize())
+                .chooseDatacenterLocationBlock(config.getDataCenter())
+                .chooseCommittedUsageBlock(config.getUsageTerm())
                 .pressAddToEstimateButton()
                 .isTotalCostCalculated();
         Assert.assertTrue(presenceOfTotalCostOnPage, "Estimated total cost is not calculated!");
