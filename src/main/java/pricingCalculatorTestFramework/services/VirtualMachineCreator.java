@@ -41,6 +41,7 @@ public class VirtualMachineCreator {
                 userChoiceConfig.setSSDsize(max.getSSDsize());
                 userChoiceConfig.setDataCenter(max.getDataCenter());
                 userChoiceConfig.setUsageTerm(max.getUsageTerm());
+                break;
             }
             default: {
                 DefaultConfiguration def = new DefaultConfiguration();
@@ -54,7 +55,6 @@ public class VirtualMachineCreator {
                 userChoiceConfig.setSSDsize(def.getSSDsize());
                 userChoiceConfig.setDataCenter(def.getDataCenter());
                 userChoiceConfig.setUsageTerm(def.getUsageTerm());
-                break;
             }
         }
 
