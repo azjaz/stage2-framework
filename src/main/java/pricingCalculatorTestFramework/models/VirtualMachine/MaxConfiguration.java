@@ -1,19 +1,16 @@
 package pricingCalculatorTestFramework.models.VirtualMachine;
 
-public class BasicConfiguration {
-
-    public BasicConfiguration() {
-    }
-    private String instancesNumber = "2";
-    private String purposeOfVMachine = "Web";
-    private String operatingSystem = "//md-option[contains(@value,'free')]";
+public class MaxConfiguration {
+    private String instancesNumber = "6";
+    private String purposeOfVMachine = "Enterprise Server";
+    private String operatingSystem = "//md-option[contains(@value,'sql-web')]";
     private String vmClass = "//md-option[contains(@id,'select_option_67')]";
-    private String vmType = "//md-option[contains(@value,'STANDARD-1')]";
-    private String numberOfGPUs = "1";
-    private String typeOfGPU = "//md-option[contains(@value,'TESLA_K80')]";
-    private String SSDsize = "//md-option[contains(@id,'select_option_170')]";
-    private String dataCenter = "//md-option[contains(@id,'select_option_183')]";
-    private String usageTerm = "//md-option[contains(@id,'select_option_83')]";
+    private String vmType = "//md-option[contains(@value,'STANDARD-8')]";
+    private String numberOfGPUs = "4";
+    private String typeOfGPU = "//md-option[contains(@value,'TESLA_V100')]";
+    private String SSDsize = "//md-option[contains(@id,'select_option_174')]";
+    private String dataCenter = "//md-option[contains(@id,'select_option_184')]";
+    private String usageTerm = "//md-option[contains(@id,'select_option_84')]";
 
     public String getInstancesNumber() {
         return instancesNumber;

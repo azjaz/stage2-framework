@@ -2,15 +2,12 @@ package pricingCalculatorTestFramework.test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pricingCalculatorTestFramework.models.VirtualMachine.BasicConfiguration;
-//import pricingCalculatorTestFramework.models.VirtualMachine.VirtualMachine;
 import pricingCalculatorTestFramework.models.VirtualMachine.VirtualMachineConfig;
 import pricingCalculatorTestFramework.page.GoogleHomePage;
 import pricingCalculatorTestFramework.page.ResultsOfCountingEstimateCostPage;
 import pricingCalculatorTestFramework.services.VirtualMachineCreator;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 

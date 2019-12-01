@@ -3,7 +3,7 @@
 <suite name="Smoke Test" verbose="1">
     <test name="CountEstimatePrice">
         <classes>
-            <class name="pricingCalculatorTestFramework.test.UserAccessTests" />
+            <class name="pricingCalculatorTestFramework.test.GooglePricingCalculatorSmokeTest" />
         </classes>
     </test>
 </suite>

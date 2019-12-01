@@ -1,7 +1,9 @@
 package pricingCalculatorTestFramework.services;
 
-import pricingCalculatorTestFramework.models.VirtualMachine.BasicConfiguration;
-import pricingCalculatorTestFramework.models.VirtualMachine.RecommendedConfiguration;
+
+import pricingCalculatorTestFramework.models.VirtualMachine.DefaultConfiguration;
+import pricingCalculatorTestFramework.models.VirtualMachine.MaxConfiguration;
+import pricingCalculatorTestFramework.models.VirtualMachine.MinConfiguration;
 import pricingCalculatorTestFramework.models.VirtualMachine.VirtualMachineConfig;
 
 
@@ -11,34 +13,47 @@ public class VirtualMachineCreator {
     public static VirtualMachineConfig createConfiguration() {
 
         VirtualMachineConfig userChoiceConfig = new VirtualMachineConfig();
-        System.setProperty("configuration", "recommended");
+//        System.setProperty("configuration", "max");
         switch (System.getProperty("configuration")) {
-            case "base" : {
-                BasicConfiguration basic = new BasicConfiguration();
-                userChoiceConfig.setInstancesNumber(basic.getInstancesNumber());
-                userChoiceConfig.setPurposeOfVMachine(basic.getPurposeOfVMachine());
-                userChoiceConfig.setOperatingSystem(basic.getOperatingSystem());
-                userChoiceConfig.setVmType(basic.getVmType());
-                userChoiceConfig.setVmClass(basic.getVmClass());
-                userChoiceConfig.setNumberOfGPUs(basic.getNumberOfGPUs());
-                userChoiceConfig.setTypeOfGPU(basic.getTypeOfGPU());
-                userChoiceConfig.setSSDsize(basic.getSSDsize());
-                userChoiceConfig.setDataCenter(basic.getDataCenter());
-                userChoiceConfig.setUsageTerm(basic.getUsageTerm());
+            case "min" : {
+                MinConfiguration min = new MinConfiguration();
+                userChoiceConfig.setInstancesNumber(min.getInstancesNumber());
+                userChoiceConfig.setPurposeOfVMachine(min.getPurposeOfVMachine());
+                userChoiceConfig.setOperatingSystem(min.getOperatingSystem());
+                userChoiceConfig.setVmType(min.getVmType());
+                userChoiceConfig.setVmClass(min.getVmClass());
+                userChoiceConfig.setNumberOfGPUs(min.getNumberOfGPUs());
+                userChoiceConfig.setTypeOfGPU(min.getTypeOfGPU());
+                userChoiceConfig.setSSDsize(min.getSSDsize());
+                userChoiceConfig.setDataCenter(min.getDataCenter());
+                userChoiceConfig.setUsageTerm(min.getUsageTerm());
                 break;
             }
+            case "max" : {
+                MaxConfiguration max = new MaxConfiguration();
+                userChoiceConfig.setInstancesNumber(max.getInstancesNumber());
+                userChoiceConfig.setPurposeOfVMachine(max.getPurposeOfVMachine());
+                userChoiceConfig.setOperatingSystem(max.getOperatingSystem());
+                userChoiceConfig.setVmType(max.getVmType());
+                userChoiceConfig.setVmClass(max.getVmClass());
+                userChoiceConfig.setNumberOfGPUs(max.getNumberOfGPUs());
+                userChoiceConfig.setTypeOfGPU(max.getTypeOfGPU());
+                userChoiceConfig.setSSDsize(max.getSSDsize());
+                userChoiceConfig.setDataCenter(max.getDataCenter());
+                userChoiceConfig.setUsageTerm(max.getUsageTerm());
+            }
             default: {
-                RecommendedConfiguration recommended = new RecommendedConfiguration();
-                userChoiceConfig.setInstancesNumber(recommended.getInstancesNumber());
-                userChoiceConfig.setPurposeOfVMachine(recommended.getPurposeOfVMachine());
-                userChoiceConfig.setOperatingSystem(recommended.getOperatingSystem());
-                userChoiceConfig.setVmType(recommended.getVmType());
-                userChoiceConfig.setVmClass(recommended.getVmClass());
-                userChoiceConfig.setNumberOfGPUs(recommended.getNumberOfGPUs());
-                userChoiceConfig.setTypeOfGPU(recommended.getTypeOfGPU());
-                userChoiceConfig.setSSDsize(recommended.getSSDsize());
-                userChoiceConfig.setDataCenter(recommended.getDataCenter());
-                userChoiceConfig.setUsageTerm(recommended.getUsageTerm());
+                DefaultConfiguration def = new DefaultConfiguration();
+                userChoiceConfig.setInstancesNumber(def.getInstancesNumber());
+                userChoiceConfig.setPurposeOfVMachine(def.getPurposeOfVMachine());
+                userChoiceConfig.setOperatingSystem(def.getOperatingSystem());
+                userChoiceConfig.setVmType(def.getVmType());
+                userChoiceConfig.setVmClass(def.getVmClass());
+                userChoiceConfig.setNumberOfGPUs(def.getNumberOfGPUs());
+                userChoiceConfig.setTypeOfGPU(def.getTypeOfGPU());
+                userChoiceConfig.setSSDsize(def.getSSDsize());
+                userChoiceConfig.setDataCenter(def.getDataCenter());
+                userChoiceConfig.setUsageTerm(def.getUsageTerm());
                 break;
             }
         }

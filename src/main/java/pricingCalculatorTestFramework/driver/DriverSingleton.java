@@ -12,7 +12,7 @@ public class DriverSingleton {
     private DriverSingleton() {}
 
     public static WebDriver getDriver() {
-        System.setProperty("browser", "chrome");
+//        System.setProperty("browser", "chrome");
         if(driver == null) {
             switch (System.getProperty("browser")) {
                 case "firefox": {
