@@ -1,4 +1,4 @@
-package pricingCalculatorTestFramework.models.VirtualMachine;
+package pricingCalculatorTestFramework.utils;
 
 import java.util.Objects;
 
