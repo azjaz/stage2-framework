@@ -1,5 +1,7 @@
 package pricingCalculatorTestFramework.models.VirtualMachine;
 
+import java.util.Objects;
+
 public class MinConfiguration {
 
     private String instancesNumber = "2";
@@ -51,5 +53,43 @@ public class MinConfiguration {
 
     public String getUsageTerm() {
         return usageTerm;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MinConfiguration that = (MinConfiguration) o;
+        return Objects.equals(instancesNumber, that.instancesNumber) &&
+                Objects.equals(purposeOfVMachine, that.purposeOfVMachine) &&
+                Objects.equals(operatingSystem, that.operatingSystem) &&
+                Objects.equals(vmClass, that.vmClass) &&
+                Objects.equals(vmType, that.vmType) &&
+                Objects.equals(numberOfGPUs, that.numberOfGPUs) &&
+                Objects.equals(typeOfGPU, that.typeOfGPU) &&
+                Objects.equals(SSDsize, that.SSDsize) &&
+                Objects.equals(dataCenter, that.dataCenter) &&
+                Objects.equals(usageTerm, that.usageTerm);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(instancesNumber, purposeOfVMachine, operatingSystem, vmClass, vmType, numberOfGPUs, typeOfGPU, SSDsize, dataCenter, usageTerm);
+    }
+
+    @Override
+    public String toString() {
+        return "MinConfiguration{" +
+                "instancesNumber='" + instancesNumber + '\'' +
+                ", purposeOfVMachine='" + purposeOfVMachine + '\'' +
+                ", operatingSystem='" + operatingSystem + '\'' +
+                ", vmClass='" + vmClass + '\'' +
+                ", vmType='" + vmType + '\'' +
+                ", numberOfGPUs='" + numberOfGPUs + '\'' +
+                ", typeOfGPU='" + typeOfGPU + '\'' +
+                ", SSDsize='" + SSDsize + '\'' +
+                ", dataCenter='" + dataCenter + '\'' +
+                ", usageTerm='" + usageTerm + '\'' +
+                '}';
     }
 }

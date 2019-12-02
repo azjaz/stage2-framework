@@ -9,7 +9,7 @@ import pricingCalculatorTestFramework.models.VirtualMachine.GPUConfig;
 
 
 public class CloudPricingCalcPage extends AbstractCorePage {
-//    protected WebElement googleFrame = driver.findElement(By.xpath("//iframe[contains(@src,'cloudpricingcalculator')]"));
+
     @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
     private WebElement googleFrame;
 
@@ -33,13 +33,7 @@ public class CloudPricingCalcPage extends AbstractCorePage {
 
     @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
     protected WebElement addGPUsCheckbox;
-//
-//    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuCount')]")
-//    private WebElement numberOfGPUs;
-//
-//    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuType')]")
-//    private WebElement gpuTypeSelect;
-//
+
     @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
     private WebElement localSSDSize;
 

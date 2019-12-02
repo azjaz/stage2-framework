@@ -21,13 +21,11 @@ public class GoogleAccountLoginPage extends AbstractCorePage {
 
     public GoogleAccountLoginPage inputEmailForLoginToGoogle(String existingEmail) {
         fillFieldsWithSendKeysValue(formForEmailOrPhoneLogin, existingEmail);
-//        formForEmailOrPhoneLogin.sendKeys(existingEmail);
         formForEmailOrPhoneLogin.sendKeys(Keys.ENTER);
         return this;
     }
     public GetTrialForFreePage inputPasswordForLoginPageGoogle(String legalPassword) {
         fillFieldsWithSendKeysValue(formForPasswordLogin, legalPassword);
-//        formForPasswordLogin.sendKeys(legalPassword);
         formForPasswordLogin.sendKeys(Keys.ENTER);
         return new GetTrialForFreePage(driver);
     }

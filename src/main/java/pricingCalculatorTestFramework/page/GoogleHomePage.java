@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleHomePage extends AbstractCorePage {
 
-
     @FindBy(xpath = "//div[@id='searchbox']/input[@name='q']")
     private WebElement searchInput;
 
@@ -24,9 +23,6 @@ public class GoogleHomePage extends AbstractCorePage {
 
     @FindBy(xpath = "//a[@data-label='Tab: Getting started']")
     private WebElement gettingStartedLink;
-
-//    @FindBy(xpath = "//a[@data-label='Sign in button']")
-//    private WebElement enterViaGoogleAccount;
 
     public GoogleHomePage(WebDriver driver) {
         super(driver);
@@ -62,8 +58,5 @@ public class GoogleHomePage extends AbstractCorePage {
                 .click();
         return new GoogleAccountLoginPage(driver);
     }
-//    public GoogleAccountLoginPage loginToGoogleAccount() {
-//        enterViaGoogleAccount.click();
-//        return new GoogleAccountLoginPage(driver);
-//    }
+
 }

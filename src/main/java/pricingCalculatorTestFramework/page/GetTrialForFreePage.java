@@ -23,7 +23,6 @@ public class GetTrialForFreePage extends AbstractCorePage {
     }
     public GetTrialForFreePage pressGetTrialButton() {
         fillFieldsWithClick(tryFreeTrialButton);
-//        tryFreeTrialButton.click();
         return this;
     }
     public List<WebElement> presenceOfCheckBoxWithTerms() {
