@@ -5,21 +5,23 @@ import pricingCalculatorTestFramework.models.VirtualMachine.DefaultConfiguration
 import pricingCalculatorTestFramework.models.VirtualMachine.MaxConfiguration;
 import pricingCalculatorTestFramework.models.VirtualMachine.MinConfiguration;
 import pricingCalculatorTestFramework.models.VirtualMachine.VirtualMachineConfig;
+import pricingCalculatorTestFramework.utils.XpathCreator;
 
 
 public class VirtualMachineCreator {
     private VirtualMachineCreator() {}
 
-    private String instancesNumber;
-    private String purposeOfVMachine;
-    private String operatingSystem;
-    private String vmClass;
-    private String vmType;
-    private String numberOfGPUs;
-    private String typeOfGPU;
-    private String SSDsize;
-    private String dataCenter;
-    private String usageTerm;
+    public static final String instancesNumber = "test.instancesNumber";
+    public static final String purposeOfVMachine = "test.purposeOfVMachine";
+    public static final String operatingSystem = XpathCreator.createXpath("test.operatingSystem");
+    public static final String vmClass = XpathCreator.createXpath("test.vmClass");
+    public static final String vmType = XpathCreator.createXpath("test.vmType");
+    public static final String numberOfGPUs = "test.numberOfGPUs";
+    public static final String typeOfGPU = XpathCreator.createXpath("test.typeOfGPU");
+    public static final String SSDsize = XpathCreator.createXpath("test.SSDsize");
+    public static final String dataCenter = XpathCreator.createXpath("test.dataCenter");
+    public static final String usageTerm = XpathCreator.createXpath("test.usageTerm");
+
     public static VirtualMachineConfig createConfiguration() {
 
         VirtualMachineConfig userChoiceConfig = new VirtualMachineConfig();
@@ -27,16 +29,16 @@ public class VirtualMachineCreator {
 //        switch (System.getProperty("configuration")) {
 //            case "min" : {
 //                MinConfiguration min = new MinConfiguration();
-                userChoiceConfig.setInstancesNumber(min.getInstancesNumber());
-                userChoiceConfig.setPurposeOfVMachine(min.getPurposeOfVMachine());
-                userChoiceConfig.setOperatingSystem(min.getOperatingSystem());
-                userChoiceConfig.setVmType(min.getVmType());
-                userChoiceConfig.setVmClass(min.getVmClass());
-                userChoiceConfig.setNumberOfGPUs(min.getNumberOfGPUs());
-                userChoiceConfig.setTypeOfGPU(min.getTypeOfGPU());
-                userChoiceConfig.setSSDsize(min.getSSDsize());
-                userChoiceConfig.setDataCenter(min.getDataCenter());
-                userChoiceConfig.setUsageTerm(min.getUsageTerm());
+                userChoiceConfig.setInstancesNumber(TestDataConfigurator.getTestData(instancesNumber));
+                userChoiceConfig.setPurposeOfVMachine(TestDataConfigurator.getTestData(purposeOfVMachine));
+                userChoiceConfig.setOperatingSystem(TestDataConfigurator.getTestData(operatingSystem));
+                userChoiceConfig.setVmType(TestDataConfigurator.getTestData(vmClass));
+                userChoiceConfig.setVmClass(TestDataConfigurator.getTestData(vmType));
+                userChoiceConfig.setNumberOfGPUs(TestDataConfigurator.getTestData(numberOfGPUs));
+                userChoiceConfig.setTypeOfGPU(TestDataConfigurator.getTestData(typeOfGPU));
+                userChoiceConfig.setSSDsize(TestDataConfigurator.getTestData(SSDsize));
+                userChoiceConfig.setDataCenter(TestDataConfigurator.getTestData(dataCenter));
+                userChoiceConfig.setUsageTerm(TestDataConfigurator.getTestData(usageTerm));
 //                break;
 //            }
 //            case "max" : {
