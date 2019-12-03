@@ -2,7 +2,7 @@ package pricingCalculatorTestFramework.test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pricingCalculatorTestFramework.models.VirtualMachine.VirtualMachineConfig;
+import pricingCalculatorTestFramework.models.VirtualMachineConfig;
 import pricingCalculatorTestFramework.page.GoogleHomePage;
 import pricingCalculatorTestFramework.page.ResultsOfCountingEstimateCostPage;
 import pricingCalculatorTestFramework.services.VirtualMachineCreator;

@@ -1,65 +1,104 @@
-package pricingCalculatorTestFramework.models.VirtualMachine;
+package pricingCalculatorTestFramework.models;
 
 import java.util.Objects;
 
-public class DefaultConfiguration {
-
-    private String instancesNumber = "4";
-    private String purposeOfVMachine = "Bank DB";
-    private String operatingSystem = "//md-option[contains(@value,'rhel-sap-ha')]";
-    private String vmClass = "//md-option[contains(@id,'select_option_67')]";
-    private String vmType = "//md-option[contains(@value,'STANDARD-4')]";
-    private String numberOfGPUs = "2";
-    private String typeOfGPU = "//md-option[contains(@value,'TESLA_P100')]";
-    private String SSDsize = "//md-option[contains(@id,'select_option_172')]";
-    private String dataCenter = "//md-option[contains(@id,'select_option_185')]";
-    private String usageTerm = "//md-option[contains(@id,'select_option_83')]";
+public class VirtualMachineConfig {
+    private String instancesNumber;
+    private String purposeOfVMachine;
+    private String operatingSystem;
+    private String vmClass;
+    private String vmType;
+    private String numberOfGPUs;
+    private String typeOfGPU;
+    private String SSDsize;
+    private String dataCenter;
+    private String usageTerm;
 
     public String getInstancesNumber() {
         return instancesNumber;
+    }
+
+    public void setInstancesNumber(String instancesNumber) {
+        this.instancesNumber = instancesNumber;
     }
 
     public String getPurposeOfVMachine() {
         return purposeOfVMachine;
     }
 
+    public void setPurposeOfVMachine(String purposeOfVMachine) {
+        this.purposeOfVMachine = purposeOfVMachine;
+    }
+
     public String getOperatingSystem() {
         return operatingSystem;
+    }
+
+    public void setOperatingSystem(String operatingSystem) {
+        this.operatingSystem = operatingSystem;
     }
 
     public String getVmClass() {
         return vmClass;
     }
 
+    public void setVmClass(String vmClass) {
+        this.vmClass = vmClass;
+    }
+
     public String getVmType() {
         return vmType;
+    }
+
+    public void setVmType(String vmType) {
+        this.vmType = vmType;
     }
 
     public String getNumberOfGPUs() {
         return numberOfGPUs;
     }
 
+    public void setNumberOfGPUs(String numberOfGPUs) {
+        this.numberOfGPUs = numberOfGPUs;
+    }
+
     public String getTypeOfGPU() {
         return typeOfGPU;
+    }
+
+    public void setTypeOfGPU(String typeOfGPU) {
+        this.typeOfGPU = typeOfGPU;
     }
 
     public String getSSDsize() {
         return SSDsize;
     }
 
+    public void setSSDsize(String SSDsize) {
+        this.SSDsize = SSDsize;
+    }
+
     public String getDataCenter() {
         return dataCenter;
+    }
+
+    public void setDataCenter(String dataCenter) {
+        this.dataCenter = dataCenter;
     }
 
     public String getUsageTerm() {
         return usageTerm;
     }
 
+    public void setUsageTerm(String usageTerm) {
+        this.usageTerm = usageTerm;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DefaultConfiguration that = (DefaultConfiguration) o;
+        VirtualMachineConfig that = (VirtualMachineConfig) o;
         return Objects.equals(instancesNumber, that.instancesNumber) &&
                 Objects.equals(purposeOfVMachine, that.purposeOfVMachine) &&
                 Objects.equals(operatingSystem, that.operatingSystem) &&
@@ -79,7 +118,7 @@ public class DefaultConfiguration {
 
     @Override
     public String toString() {
-        return "DefaultConfiguration{" +
+        return "VirtualMachineConfig{" +
                 "instancesNumber='" + instancesNumber + '\'' +
                 ", purposeOfVMachine='" + purposeOfVMachine + '\'' +
                 ", operatingSystem='" + operatingSystem + '\'' +
