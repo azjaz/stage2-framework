@@ -9,18 +9,18 @@ import pricingCalculatorTestFramework.utils.XpathCreator;
 
 
 public class VirtualMachineCreator {
-    private VirtualMachineCreator() {}
+//    private VirtualMachineCreator() {}
 
-    public static final String instancesNumber = "test.instancesNumber";
-    public static final String purposeOfVMachine = "test.purposeOfVMachine";
-    public static final String operatingSystem = XpathCreator.createXpath("test.operatingSystem");
-    public static final String vmClass = XpathCreator.createXpath("test.vmClass");
-    public static final String vmType = XpathCreator.createXpath("test.vmType");
-    public static final String numberOfGPUs = "test.numberOfGPUs";
-    public static final String typeOfGPU = XpathCreator.createXpath("test.typeOfGPU");
-    public static final String SSDsize = XpathCreator.createXpath("test.SSDsize");
-    public static final String dataCenter = XpathCreator.createXpath("test.dataCenter");
-    public static final String usageTerm = XpathCreator.createXpath("test.usageTerm");
+    public static final String instancesNumber = TestDataConfigurator.getTestData("test.instancesNumber");
+    public static final String purposeOfVMachine = TestDataConfigurator.getTestData("test.purposeOfVMachine");
+    public static final String operatingSystem = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.operatingSystem"));
+    public static final String vmClass = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.vmClass"));
+    public static final String vmType = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.vmType"));
+    public static final String numberOfGPUs = TestDataConfigurator.getTestData("test.numberOfGPUs");
+    public static final String typeOfGPU = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.typeOfGPU"));
+    public static final String SSDsize = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.SSDsize"));
+    public static final String dataCenter = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.dataCenter"));
+    public static final String usageTerm = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.usageTerm"));
 
     public static VirtualMachineConfig createConfiguration() {
 
@@ -29,16 +29,16 @@ public class VirtualMachineCreator {
 //        switch (System.getProperty("configuration")) {
 //            case "min" : {
 //                MinConfiguration min = new MinConfiguration();
-                userChoiceConfig.setInstancesNumber(TestDataConfigurator.getTestData(instancesNumber));
-                userChoiceConfig.setPurposeOfVMachine(TestDataConfigurator.getTestData(purposeOfVMachine));
-                userChoiceConfig.setOperatingSystem(TestDataConfigurator.getTestData(operatingSystem));
-                userChoiceConfig.setVmType(TestDataConfigurator.getTestData(vmClass));
-                userChoiceConfig.setVmClass(TestDataConfigurator.getTestData(vmType));
-                userChoiceConfig.setNumberOfGPUs(TestDataConfigurator.getTestData(numberOfGPUs));
-                userChoiceConfig.setTypeOfGPU(TestDataConfigurator.getTestData(typeOfGPU));
-                userChoiceConfig.setSSDsize(TestDataConfigurator.getTestData(SSDsize));
-                userChoiceConfig.setDataCenter(TestDataConfigurator.getTestData(dataCenter));
-                userChoiceConfig.setUsageTerm(TestDataConfigurator.getTestData(usageTerm));
+                userChoiceConfig.setInstancesNumber(instancesNumber);
+                userChoiceConfig.setPurposeOfVMachine(purposeOfVMachine);
+                userChoiceConfig.setOperatingSystem(operatingSystem);
+                userChoiceConfig.setVmType(vmClass);
+                userChoiceConfig.setVmClass(vmType);
+                userChoiceConfig.setNumberOfGPUs(numberOfGPUs);
+                userChoiceConfig.setTypeOfGPU(typeOfGPU);
+                userChoiceConfig.setSSDsize(SSDsize);
+                userChoiceConfig.setDataCenter(dataCenter);
+                userChoiceConfig.setUsageTerm(usageTerm);
 //                break;
 //            }
 //            case "max" : {
@@ -70,6 +70,6 @@ public class VirtualMachineCreator {
 //            }
 //        }
 //
-//        return userChoiceConfig;
+        return userChoiceConfig;
     }
 }
