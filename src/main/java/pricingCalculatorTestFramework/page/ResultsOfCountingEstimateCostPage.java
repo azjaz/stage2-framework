@@ -90,10 +90,10 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         logger.info("Total cost from letter is present");
         return costFromEmail.split(" ");
     }
-    public boolean isTotalCostCalculated() {
+    public String getTotalCostCalculated() {
         driver.switchTo().frame(googleFrame);
-        List<WebElement> totalCostCalculated = driver.findElements(By.xpath("//h2[@class='md-title']/b"));
+        String totalCostCalculated = driver.findElement(By.xpath("//h2[@class='md-title']/b")).getText();
         driver.switchTo().defaultContent();
-        return totalCostCalculated.size() > 0;
+        return totalCostCalculated;
     }
 }

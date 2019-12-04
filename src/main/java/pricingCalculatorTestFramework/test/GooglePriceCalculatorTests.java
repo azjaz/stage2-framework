@@ -52,7 +52,7 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
 
     @Test
     public void presenceOfTotalCostOnPageTest() {
-        boolean presenceOfTotalCostOnPage = new GoogleHomePage(driver)
+        String presenceOfTotalCostOnPage = new GoogleHomePage(driver)
                 .openPage()
                 .searchForTerm(termToSearch)
                 .clickOnRequiredLink()
@@ -67,8 +67,8 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .chooseDatacenterLocationBlock(config.getDataCenter())
                 .chooseCommittedUsageBlock(config.getUsageTerm())
                 .pressAddToEstimateButton()
-                .isTotalCostCalculated();
-        Assert.assertTrue(presenceOfTotalCostOnPage, "Estimated total cost is not calculated!");
+                .getTotalCostCalculated();
+        Assert.assertTrue(presenceOfTotalCostOnPage.equals(COST_FOR_DEV_CONFIG), "Estimated total cost is not calculated!");
     }
 
 }

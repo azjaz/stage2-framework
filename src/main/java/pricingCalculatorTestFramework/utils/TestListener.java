@@ -12,6 +12,8 @@ import pricingCalculatorTestFramework.driver.DriverSingleton;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TestListener implements ITestListener {
     Logger logger = LogManager.getRootLogger();
@@ -28,7 +30,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-
+        createScreenshot();
     }
 
     @Override
@@ -53,9 +55,14 @@ public class TestListener implements ITestListener {
     private void createScreenshot() {
         File screenShot = ((TakesScreenshot) DriverSingleton.getDriver()).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(screenShot, new File("\\target\\screenshots\\scrsht.png"));
+            FileUtils.copyFile(screenShot, new File("target\\screenshots\\" +
+                    getCurrentTimeAsString() +
+                    ".png"));
         } catch (IOException e) {
            logger.error("Filed to save screenshot: " + e.getLocalizedMessage());
         }
+    }
+    private String getCurrentTimeAsString() {
+        return ZonedDateTime.now().format(DateTimeFormatter.ofPattern("uuuu-MM-dd_HH-mm-ss"));
     }
 }
