@@ -29,6 +29,6 @@ public class GooglePricingCalculatorSmokeTest extends TestCommonConditions{
                 .pressAddToEstimateButton()
                 .getTotalCostCalculated();
 
-        Assert.assertTrue(presenceOfTotalCostOnPage.equals(COST_FOR_DEV_CONFIG), "Estimated total cost is not calculated!");
+        Assert.assertTrue(presenceOfTotalCostOnPage.equals(COST_FOR_CONFIG), "Estimated total cost is not calculated!");
     }
 }
