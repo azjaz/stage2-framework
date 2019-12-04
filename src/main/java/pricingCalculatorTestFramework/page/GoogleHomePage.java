@@ -1,6 +1,8 @@
 package pricingCalculatorTestFramework.page;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleHomePage extends AbstractCorePage {
+
+    private final Logger logger = LogManager.getRootLogger();
 
     @FindBy(xpath = "//div[@id='searchbox']/input[@name='q']")
     private WebElement searchInput;
@@ -45,6 +49,7 @@ public class GoogleHomePage extends AbstractCorePage {
         WebDriverWait wait = new WebDriverWait(driver, DRIVER_TIMEOUT);
         wait.until(ExpectedConditions.elementToBeClickable(searchResult))
                 .click();
+        logger.info("Shifting on Pricing Calc Page was performed");
         return new CloudPricingCalcPage(driver);
     }
     public GoogleAccountLoginPage pressGetStartedForFreeButton() {

@@ -1,5 +1,7 @@
 package pricingCalculatorTestFramework.page;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +17,7 @@ import java.util.List;
 public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
 
     private List<String> openedTabs;
+    private final Logger logger = LogManager.getRootLogger();
 
     @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
     private WebElement googleFrame;
@@ -42,6 +45,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         driver.switchTo().frame(googleFrame);
         String totalCostValue = driver.findElement(By.xpath("//h2[@class='md-title']/b")).getText();
         driver.switchTo().defaultContent();
+        logger.info("The total cost was got from calculator");
         return totalCostValue.split(" ");
     }
 
@@ -69,6 +73,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithClick(sendEmailButton);
         driver.switchTo().defaultContent();
+        logger.info("E-mail was sent");
         return this;
     }
 
@@ -82,6 +87,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         String costFromEmail = new WebDriverWait(driver, DRIVER_TIMEOUT)
                 .until(ExpectedConditions.visibilityOf(totalCostInLetter))
                 .getText();
+        logger.info("Total cost from letter is present");
         return costFromEmail.split(" ");
     }
     public boolean isTotalCostCalculated() {
