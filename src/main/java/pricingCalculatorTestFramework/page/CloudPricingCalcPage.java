@@ -58,36 +58,42 @@ public class CloudPricingCalcPage extends AbstractCorePage {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithClick(computeEngineBlock);
         driver.switchTo().defaultContent();
+        logger.info("The 'Compute Engine Block' was activated");
         return this;
     }
     public CloudPricingCalcPage fillNumberOfInstancesField(String number)  {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithSendKeysValue(numberOfInstances, number);
         driver.switchTo().defaultContent();
+        logger.info("Number of instances was input");
         return this;
     }
     public CloudPricingCalcPage fillPurposeOfInstancesBlock(String purpose) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithSendKeysValue(purposeOfInstances, purpose);
         driver.switchTo().defaultContent();
+        logger.info("VM purpose was defined");
         return this;
     }
     public CloudPricingCalcPage chooseSoftwareBlock(String OSType) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(softwareType, OSType);
         driver.switchTo().defaultContent();
+        logger.info("OS was chosen");
         return this;
     }
     public CloudPricingCalcPage chooseVMachineClassBlock(String vmClass) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(vMachineClass, vmClass);
         driver.switchTo().defaultContent();
+        logger.info("VM class was chosen");
         return this;
     }
     public CloudPricingCalcPage chooseMachineTypeBlock(String vmType) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(vMachineType, vmType);
         driver.switchTo().defaultContent();
+        logger.info("VM type was chosen");
         return this;
     }
     public CloudPricingCalcPage chooseGPUTypeBlock(String numberOfGPUs, String typeOfGPU) {
@@ -101,24 +107,28 @@ public class CloudPricingCalcPage extends AbstractCorePage {
             fillFieldsWithDroppedList(driver.findElement(By.xpath(config.getGpuTypeSelect())), typeOfGPU);
         }
         driver.switchTo().defaultContent();
+        logger.info("GPU block was defined");
         return this;
     }
     public CloudPricingCalcPage chooseLocalSSDBlock(String SSDSize) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(localSSDSize, SSDSize);
         driver.switchTo().defaultContent();
+        logger.info("SSD size was chosen");
         return this;
     }
     public CloudPricingCalcPage chooseDatacenterLocationBlock(String dataCenter) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(datacenterLocation, dataCenter);
         driver.switchTo().defaultContent();
+        logger.info("Datacenter was chosen");
         return this;
     }
     public CloudPricingCalcPage chooseCommittedUsageBlock(String usageTerm) {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithDroppedList(committedUsageTerm, usageTerm);
         driver.switchTo().defaultContent();
+        logger.info("Usage term was chosen");
         return this;
     }
     public ResultsOfCountingEstimateCostPage pressAddToEstimateButton() {
