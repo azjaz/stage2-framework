@@ -41,12 +41,12 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-    public String[] getTotalCostFromCalculator() {
+    public String getTotalCostFromCalculator() {
         driver.switchTo().frame(googleFrame);
         String totalCostValue = driver.findElement(By.xpath("//h2[@class='md-title']/b")).getText();
         driver.switchTo().defaultContent();
         logger.info("The total cost was got from calculator");
-        return totalCostValue.split(" ");
+        return totalCostValue;
     }
 
     public ResultsOfCountingEstimateCostPage pressEmailEstimateButton() {
@@ -90,10 +90,10 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         logger.info("Total cost from letter is present");
         return costFromEmail.split(" ");
     }
-    public String getTotalCostCalculated() {
-        driver.switchTo().frame(googleFrame);
-        String totalCostCalculated = driver.findElement(By.xpath("//h2[@class='md-title']/b")).getText();
-        driver.switchTo().defaultContent();
-        return totalCostCalculated;
-    }
+//    public String getTotalCostCalculated() {
+//        driver.switchTo().frame(googleFrame);
+//        String totalCostCalculated = driver.findElement(By.xpath("//h2[@class='md-title']/b")).getText();
+//        driver.switchTo().defaultContent();
+//        return totalCostCalculated;
+//    }
 }

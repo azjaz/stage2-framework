@@ -52,16 +52,5 @@ public class GoogleHomePage extends AbstractCorePage {
         logger.info("Shifting on Pricing Calc Page was performed");
         return new CloudPricingCalcPage(driver);
     }
-    public GoogleAccountLoginPage pressGetStartedForFreeButton() {
-        getStartedForFreeButton.click();
-        return new GoogleAccountLoginPage(driver);
-    }
-    public GoogleAccountLoginPage pressGettingStartedLink() {
-        gettingStartedLink.click();
-        new WebDriverWait(driver, DRIVER_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@track-name='console']/span")))
-                .click();
-        return new GoogleAccountLoginPage(driver);
-    }
 
 }

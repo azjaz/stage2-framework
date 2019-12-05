@@ -33,7 +33,7 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .chooseCommittedUsageBlock(config.getUsageTerm())
                 .pressAddToEstimateButton();
 
-        String totalCostFromCalculator = Arrays.stream(testPage.getTotalCostFromCalculator())
+        String totalCostFromCalculator = Arrays.stream(testPage.getTotalCostFromCalculator().split(" "))
                 .filter((p) -> p.matches(REGEX_ESTIMATED_COST_SUM))
                 .collect(Collectors.joining());
 
@@ -67,7 +67,7 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .chooseDatacenterLocationBlock(config.getDataCenter())
                 .chooseCommittedUsageBlock(config.getUsageTerm())
                 .pressAddToEstimateButton()
-                .getTotalCostCalculated();
+                .getTotalCostFromCalculator();
         Assert.assertTrue(presenceOfTotalCostOnPage.equals(COST_FOR_CONFIG), "Estimated total cost is not calculated!");
     }
 
