@@ -27,7 +27,7 @@ public class GooglePricingCalculatorSmokeTest extends TestCommonConditions{
                 .chooseDatacenterLocationBlock(config.getDataCenter())
                 .chooseCommittedUsageBlock(config.getUsageTerm())
                 .pressAddToEstimateButton()
-                .getTotalCostCalculated();
+                .getTotalCostFromCalculator();
 
         Assert.assertTrue(presenceOfTotalCostOnPage.equals(COST_FOR_CONFIG), "Estimated total cost is not calculated!");
     }
