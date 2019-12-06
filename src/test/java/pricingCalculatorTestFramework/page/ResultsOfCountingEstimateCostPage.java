@@ -53,6 +53,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithClick(emailEstimateButton);
         driver.switchTo().defaultContent();
+        logger.info("'Email Estimate' button was pressed");
         return new ResultsOfCountingEstimateCostPage(driver);
     }
     public ResultsOfCountingEstimateCostPage fillEmailField() {
