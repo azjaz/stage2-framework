@@ -8,7 +8,7 @@ import pricingCalculatorTestFramework.services.VirtualMachineCreator;
 
 public class GooglePricingCalculatorSmokeTest extends TestCommonConditions{
 
-    VirtualMachineConfig config = VirtualMachineCreator.createConfiguration();
+    protected VirtualMachineConfig config = VirtualMachineCreator.createConfiguration();
 
     @Test
     public void presenceOfTotalCostOnPageTest() {

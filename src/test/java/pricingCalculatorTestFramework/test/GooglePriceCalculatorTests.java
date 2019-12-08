@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 
 public class GooglePriceCalculatorTests extends TestCommonConditions {
-    VirtualMachineConfig config = VirtualMachineCreator.createConfiguration();
+    protected VirtualMachineConfig config = VirtualMachineCreator.createConfiguration();
 
     @Test
     public void correspondenceOfTotalCostOnPageAndMailTest() {
