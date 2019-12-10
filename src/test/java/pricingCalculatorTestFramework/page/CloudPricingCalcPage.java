@@ -20,31 +20,31 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     @FindBy(xpath = "//md-tab-item/div[contains(@class,'compute')]")
     private WebElement computeEngineBlock;
 
-    @FindBy(xpath = "//input[@id='input_53']")
+    @FindBy(xpath = "//input[contains(@ng-model,'.quantity')]")
     private WebElement numberOfInstances;
 
-    @FindBy(xpath = "//input[@id='input_54']")
+    @FindBy(xpath = "//input[contains(@ng-model,'computeServer.label')]")
     private WebElement purposeOfInstances;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_46']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.os')]")
     private WebElement softwareType;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_47']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.class')]")
     private WebElement vMachineClass;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_49']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.family')]")
     private WebElement vMachineType;
 
     @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
     protected WebElement addGPUsCheckbox;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.ssd')]")
     private WebElement localSSDSize;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_51']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.location')]")
     private WebElement datacenterLocation;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_52']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.cud')]")
     private WebElement committedUsageTerm;
 
     @FindBy(xpath = "//form[@name='ComputeEngineForm']//button[contains(text(),'Add') and contains(text(),'Estimate')]")

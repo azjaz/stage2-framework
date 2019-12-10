@@ -21,12 +21,6 @@ public class GoogleHomePage extends AbstractCorePage {
     @FindBy(xpath = "//div[@class='gs-title']//a[@href='https://cloud.google.com/products/calculator/']/b[text()='Google Cloud Platform Pricing Calculator']")
     private WebElement searchResult;
 
-    @FindBy(xpath = "//a[contains(@class,'cloud-free-trial-button')]")
-    private WebElement getStartedForFreeButton;
-
-    @FindBy(xpath = "//a[@data-label='Tab: Getting started']")
-    private WebElement gettingStartedLink;
-
     public GoogleHomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
