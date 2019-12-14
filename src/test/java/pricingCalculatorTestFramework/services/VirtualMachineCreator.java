@@ -8,14 +8,14 @@ public class VirtualMachineCreator {
 
     public static final String INSTANCES_NUMBER = TestDataConfigurator.getTestData("test.instancesNumber");
     public static final String PURPOSE_OF_VMACHINE = TestDataConfigurator.getTestData("test.purposeOfVMachine");
-    public static final String OPERATING_SYSTEM = XpathCreator.createComplexXpath(TestDataConfigurator.getTestData("test.operatingSystem"));
-    public static final String VM_CLASS = XpathCreator.createComplexXpath(TestDataConfigurator.getTestData("test.vmClass"));
-    public static final String VM_TYPE = XpathCreator.createComplexXpath(TestDataConfigurator.getTestData("test.vmType"));
+    public static final String OPERATING_SYSTEM = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.operatingSystem"));
+    public static final String VM_CLASS = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.vmClass"));
+    public static final String VM_TYPE = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.vmType"));
     public static final String NUMBER_OF_GPUS = TestDataConfigurator.getTestData("test.numberOfGPUs");
-    public static final String TYPE_OF_GPU = XpathCreator.createComplexXpath(TestDataConfigurator.getTestData("test.typeOfGPU"));
-    public static final String SSD_SIZE = XpathCreator.createComplexXpath(TestDataConfigurator.getTestData("test.SSDsize"));
-    public static final String DATA_CENTER = XpathCreator.createComplexXpath(TestDataConfigurator.getTestData("test.dataCenter"));
-    public static final String USAGE_TERM = XpathCreator.createComplexXpath(TestDataConfigurator.getTestData("test.usageTerm"));
+    public static final String TYPE_OF_GPU = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.typeOfGPU"));
+    public static final String SSD_SIZE = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.SSDsize"));
+    public static final String DATA_CENTER = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.dataCenter"));
+    public static final String USAGE_TERM = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.usageTerm"));
 
     public static VirtualMachineConfig createConfiguration() {
         VirtualMachineConfig userChoiceConfig = new VirtualMachineConfig();
