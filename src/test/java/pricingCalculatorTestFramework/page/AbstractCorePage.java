@@ -30,6 +30,8 @@ public class AbstractCorePage {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
         executor.executeScript("arguments[0].click();", driver.findElement(By.xpath(itemXpath)));
+        new WebDriverWait(driver, DRIVER_TIMEOUT)
+                .until(ExpectedConditions.elementToBeClickable(element));
     }
     protected void fillFieldsWithSendKeysValue(WebElement element, String key) {
         new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(element))

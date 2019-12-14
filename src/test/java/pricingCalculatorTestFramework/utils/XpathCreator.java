@@ -6,6 +6,6 @@ public class XpathCreator {
     }
 
     public static String createComplexXpath(String option) {
-        return String.format("//md-option/div[contains(%s)]", option);
+        return String.format("//md-option/div[contains(text(),'%s')]", option);
     }
 }
