@@ -41,7 +41,7 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.ssd')]")
     private WebElement localSSDSize;
 
-    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.location')]")
+    @FindBy(xpath = "//md-select[contains(@ng-model, 'soleTenant.location')]")
     private WebElement datacenterLocation;
 
     @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.cud')]")
