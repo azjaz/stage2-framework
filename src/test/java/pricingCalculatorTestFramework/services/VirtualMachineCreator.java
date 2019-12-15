@@ -15,7 +15,7 @@ public class VirtualMachineCreator {
     public static final String TYPE_OF_GPU = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.typeOfGPU"));
     public static final String SSD_SIZE = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.SSDsize"));
     public static final String DATA_CENTER = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.dataCenter"));
-    public static final String USAGE_TERM = XpathCreator.createXpath(TestDataConfigurator.getTestData("test.usageTerm"));
+    public static final String USAGE_TERM = TestDataConfigurator.getTestData("test.usageTerm");
 
     public static VirtualMachineConfig createConfiguration() {
         VirtualMachineConfig userChoiceConfig = new VirtualMachineConfig();

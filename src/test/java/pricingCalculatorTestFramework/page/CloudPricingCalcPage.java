@@ -126,7 +126,7 @@ public class CloudPricingCalcPage extends AbstractCorePage {
     }
     public CloudPricingCalcPage chooseCommittedUsageBlock(String usageTerm) {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(committedUsageTerm, usageTerm);
+        fillFieldsWithSendKeysValue(committedUsageTerm, usageTerm);
         driver.switchTo().defaultContent();
         logger.info("Usage term was chosen");
         return this;
