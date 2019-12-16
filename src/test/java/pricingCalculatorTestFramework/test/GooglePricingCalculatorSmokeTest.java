@@ -8,7 +8,7 @@ import pricingCalculatorTestFramework.services.VirtualMachineCreator;
 
 public class GooglePricingCalculatorSmokeTest extends TestCommonConditions{
 
-    protected VirtualMachineConfig config = VirtualMachineCreator.createConfiguration();
+    private VirtualMachineConfig config = VirtualMachineCreator.createConfiguration();
 
     @Test
     public void presenceOfTotalCostOnPageTest() {
@@ -29,6 +29,6 @@ public class GooglePricingCalculatorSmokeTest extends TestCommonConditions{
                 .pressAddToEstimateButton()
                 .getTotalCostFromCalculator();
 
-        Assert.assertTrue(presenceOfTotalCostOnPage.equals(COST_FOR_CONFIG), "Estimated total cost is not calculated!");
+        Assert.assertEquals(presenceOfTotalCostOnPage, COST_FOR_CONFIG, "Estimated total cost is not calculated!");
     }
 }

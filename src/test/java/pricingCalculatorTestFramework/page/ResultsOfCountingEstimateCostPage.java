@@ -7,7 +7,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,6 +17,9 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
 
     private List<String> openedTabs;
     private final Logger logger = LogManager.getRootLogger();
+
+    private String totalCostFromCalcXpath = "//h2[@class='md-title']/b";
+    private String formForEmailXpath = "//form[@name='emailForm']//input[@type='email']";
 
     @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
     private WebElement googleFrame;
@@ -32,18 +34,17 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
     private WebElement emailAddress;
 
     @FindBy(xpath = "//h3[@id='ui-id-1']")
-    WebElement messageList;
+    private WebElement messageList;
 
     @FindBy(xpath = "//div[@id='Email']//table[@class='table']//h2")
     private WebElement totalCostInLetter;
 
     public ResultsOfCountingEstimateCostPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
     public String getTotalCostFromCalculator() {
         driver.switchTo().frame(googleFrame);
-        String totalCostValue = driver.findElement(By.xpath("//h2[@class='md-title']/b")).getText();
+        String totalCostValue = driver.findElement(By.xpath(totalCostFromCalcXpath)).getText();
         driver.switchTo().defaultContent();
         logger.info("The total cost was got from calculator");
         return totalCostValue;
@@ -66,7 +67,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         driver.switchTo().window(openedTabs.get(0));
 
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithSendKeysValue(driver.findElement(By.xpath("//form[@name='emailForm']//input[@type='email']")), emailToPaste);
+        fillFieldsWithSendKeysValue(driver.findElement(By.xpath(formForEmailXpath)), emailToPaste);
         driver.switchTo().defaultContent();
         return this;
     }

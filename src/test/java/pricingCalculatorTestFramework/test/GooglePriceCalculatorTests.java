@@ -7,12 +7,8 @@ import pricingCalculatorTestFramework.page.GoogleHomePage;
 import pricingCalculatorTestFramework.page.ResultsOfCountingEstimateCostPage;
 import pricingCalculatorTestFramework.services.VirtualMachineCreator;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
-
 public class GooglePriceCalculatorTests extends TestCommonConditions {
-    protected VirtualMachineConfig config = VirtualMachineCreator.createConfiguration();
+    private VirtualMachineConfig config = VirtualMachineCreator.createConfiguration();
 
     @Test
     public void correspondenceOfTotalCostOnPageAndMailTest() {
@@ -33,18 +29,14 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .chooseCommittedUsageBlock(config.getUsageTerm())
                 .pressAddToEstimateButton();
 
-        String totalCostFromCalculator = Arrays.stream(testPage.getTotalCostFromCalculator().split(" "))
-                .filter((p) -> p.matches(REGEX_ESTIMATED_COST_SUM))
-                .collect(Collectors.joining());
 
         ResultsOfCountingEstimateCostPage testEmailServicePage = testPage.pressEmailEstimateButton()
                 .fillEmailField()
                 .pressSendEmailButton()
                 .spinMessageList();
 
-        String totalCostFromMail = Arrays.stream(testEmailServicePage.getTotalCostFromTheLetter())
-                .filter((p) -> p.matches(REGEX_ESTIMATED_COST_SUM))
-                .collect(Collectors.joining());
+        String totalCostFromCalculator = totalCostCounter(testPage.getTotalCostFromCalculator().split(" "));
+        String totalCostFromMail = totalCostCounter(testEmailServicePage.getTotalCostFromTheLetter());
 
         Assert.assertEquals(totalCostFromCalculator, totalCostFromMail);
 
@@ -68,7 +60,7 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .chooseCommittedUsageBlock(config.getUsageTerm())
                 .pressAddToEstimateButton()
                 .getTotalCostFromCalculator();
-        Assert.assertTrue(presenceOfTotalCostOnPage.equals(COST_FOR_CONFIG), "Estimated total cost is not calculated!");
+        Assert.assertEquals(presenceOfTotalCostOnPage, COST_FOR_CONFIG, "Estimated total cost is not calculated!");
     }
 
 }
