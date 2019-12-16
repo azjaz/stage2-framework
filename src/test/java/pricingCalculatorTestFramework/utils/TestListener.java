@@ -19,11 +19,6 @@ public class TestListener implements ITestListener {
     Logger logger = LogManager.getRootLogger();
 
     @Override
-    public void onTestStart(ITestResult iTestResult) {
-
-    }
-
-    @Override
     public void onTestSuccess(ITestResult iTestResult) {
 
     }
