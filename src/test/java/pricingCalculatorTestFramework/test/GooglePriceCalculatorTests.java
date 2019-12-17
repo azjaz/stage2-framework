@@ -32,6 +32,7 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
         String totalCostFromCalculator = totalCostCounter(testPage.getTotalCostFromCalculator().split(" "));
 
         ResultsOfCountingEstimateCostPage testEmailServicePage = testPage.pressEmailEstimateButton()
+                .getEmailFromField()
                 .fillEmailField()
                 .pressSendEmailButton()
                 .spinMessageList();

@@ -13,6 +13,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
 
     private final Logger logger = LogManager.getRootLogger();
 
+    private String emailToPaste;
     private String totalCostFromCalcXpath = "//h2[@class='md-title']/b";
     private String formForEmailXpath = "//form[@name='emailForm']//input[@type='email']";
 
@@ -44,7 +45,6 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         logger.info("The total cost was got from calculator");
         return totalCostValue;
     }
-
     public ResultsOfCountingEstimateCostPage pressEmailEstimateButton() {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithClick(emailEstimateButton);
@@ -52,12 +52,14 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         logger.info("'Email Estimate' button was pressed");
         return new ResultsOfCountingEstimateCostPage(driver);
     }
-    public ResultsOfCountingEstimateCostPage fillEmailField() {
+    public ResultsOfCountingEstimateCostPage getEmailFromField() {
         ((JavascriptExecutor) driver).executeScript(String.format("window.open('%s');", EMAIL_CREATOR_PAGE));
         tabSwitcher(driver.getWindowHandle());
-        String emailToPaste = waiter(emailAddress).getAttribute("value");
+        emailToPaste = waiter(emailAddress).getAttribute("value");
         tabSwitcher(driver.getWindowHandle());
-
+        return this;
+    }
+     public ResultsOfCountingEstimateCostPage fillEmailField() {
         driver.switchTo().frame(googleFrame);
         fillFieldsWithSendKeysValue(driver.findElement(By.xpath(formForEmailXpath)), emailToPaste);
         driver.switchTo().defaultContent();
@@ -70,13 +72,11 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         logger.info("E-mail was sent");
         return this;
     }
-
     public ResultsOfCountingEstimateCostPage spinMessageList() {
         tabSwitcher(driver.getWindowHandle());
         fillFieldsWithClick(messageList);
         return this;
     }
-
     public String[] getTotalCostFromTheLetter() {
         String costFromEmail = waiter(totalCostInLetter).getText();
         logger.info("Total cost from letter is present");
