@@ -34,7 +34,7 @@ public class GoogleHomePage extends AbstractCorePage {
         return this;
     }
     public CloudPricingCalcPage clickOnRequiredLink() {
-        fillFieldsWithClick(searchResult);
+        waiter(searchResult).click();
         logger.info("Shifting on Pricing Calc Page was performed");
         return new CloudPricingCalcPage(driver);
     }
