@@ -61,9 +61,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         ((JavascriptExecutor) driver).executeScript(String.format("window.open('%s');", EMAIL_CREATOR_PAGE));
         openedTabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(openedTabs.get(1));
-        String emailToPaste = new WebDriverWait(driver, DRIVER_TIMEOUT)
-                .until(ExpectedConditions.visibilityOf(emailAddress))
-                .getAttribute("value");
+        String emailToPaste = waiter(emailAddress).getAttribute("value");
         driver.switchTo().window(openedTabs.get(0));
 
         driver.switchTo().frame(googleFrame);
@@ -86,9 +84,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
     }
 
     public String[] getTotalCostFromTheLetter() {
-        String costFromEmail = new WebDriverWait(driver, DRIVER_TIMEOUT)
-                .until(ExpectedConditions.visibilityOf(totalCostInLetter))
-                .getText();
+        String costFromEmail = waiter(totalCostInLetter).getText();
         logger.info("Total cost from letter is present");
         return costFromEmail.split(" ");
     }

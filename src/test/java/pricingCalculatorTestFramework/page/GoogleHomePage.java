@@ -26,8 +26,9 @@ public class GoogleHomePage extends AbstractCorePage {
 
     public GoogleHomePage openPage() {
         driver.get(HOMEPAGE_URL);
-        new WebDriverWait(driver, DRIVER_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(searchInput));
+        waiter(searchInput);
+//        new WebDriverWait(driver, DRIVER_TIMEOUT)
+//                .until(ExpectedConditions.visibilityOf(searchInput));
         return this;
     }
     public GoogleHomePage searchForTerm(String termToSearch) {
@@ -37,9 +38,10 @@ public class GoogleHomePage extends AbstractCorePage {
         return this;
     }
     public CloudPricingCalcPage clickOnRequiredLink() {
-        WebDriverWait wait = new WebDriverWait(driver, DRIVER_TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(searchResult))
-                .click();
+        fillFieldsWithClick(searchResult);
+//        WebDriverWait wait = new WebDriverWait(driver, DRIVER_TIMEOUT);
+//        wait.until(ExpectedConditions.elementToBeClickable(searchResult))
+//                .click();
         logger.info("Shifting on Pricing Calc Page was performed");
         return new CloudPricingCalcPage(driver);
     }
