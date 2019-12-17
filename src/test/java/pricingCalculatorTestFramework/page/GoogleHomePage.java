@@ -7,8 +7,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleHomePage extends AbstractCorePage {
 
@@ -27,8 +25,6 @@ public class GoogleHomePage extends AbstractCorePage {
     public GoogleHomePage openPage() {
         driver.get(HOMEPAGE_URL);
         waiter(searchInput);
-//        new WebDriverWait(driver, DRIVER_TIMEOUT)
-//                .until(ExpectedConditions.visibilityOf(searchInput));
         return this;
     }
     public GoogleHomePage searchForTerm(String termToSearch) {
@@ -39,9 +35,6 @@ public class GoogleHomePage extends AbstractCorePage {
     }
     public CloudPricingCalcPage clickOnRequiredLink() {
         fillFieldsWithClick(searchResult);
-//        WebDriverWait wait = new WebDriverWait(driver, DRIVER_TIMEOUT);
-//        wait.until(ExpectedConditions.elementToBeClickable(searchResult))
-//                .click();
         logger.info("Shifting on Pricing Calc Page was performed");
         return new CloudPricingCalcPage(driver);
     }

@@ -7,15 +7,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
 
-    private List<String> openedTabs;
     private final Logger logger = LogManager.getRootLogger();
 
     private String totalCostFromCalcXpath = "//h2[@class='md-title']/b";
@@ -59,10 +54,9 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
     }
     public ResultsOfCountingEstimateCostPage fillEmailField() {
         ((JavascriptExecutor) driver).executeScript(String.format("window.open('%s');", EMAIL_CREATOR_PAGE));
-        openedTabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(openedTabs.get(1));
+        tabSwitcher(driver.getWindowHandle());
         String emailToPaste = waiter(emailAddress).getAttribute("value");
-        driver.switchTo().window(openedTabs.get(0));
+        tabSwitcher(driver.getWindowHandle());
 
         driver.switchTo().frame(googleFrame);
         fillFieldsWithSendKeysValue(driver.findElement(By.xpath(formForEmailXpath)), emailToPaste);
@@ -78,7 +72,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
     }
 
     public ResultsOfCountingEstimateCostPage spinMessageList() {
-        driver.switchTo().window(openedTabs.get(1));
+        tabSwitcher(driver.getWindowHandle());
         fillFieldsWithClick(messageList);
         return this;
     }

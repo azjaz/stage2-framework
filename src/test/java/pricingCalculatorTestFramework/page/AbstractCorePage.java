@@ -28,7 +28,6 @@ public class AbstractCorePage {
         ((JavascriptExecutor) driver).executeScript(JS_CLICK, element);
     }
     protected void fillFieldsWithDroppedList(WebElement element, String itemXpath) {
-        waiter(element);
         fillFieldsWithClick(element);
         ((JavascriptExecutor) driver).executeScript(JS_CLICK, driver.findElement(By.xpath(itemXpath)));
     }
@@ -40,5 +39,12 @@ public class AbstractCorePage {
         return new WebDriverWait(driver, DRIVER_TIMEOUT)
                 .until(ExpectedConditions.visibilityOf(element));
     }
-
+    public void tabSwitcher(String currentWindow) {
+        for(String windowHandle : driver.getWindowHandles()) {
+            if(!currentWindow.contentEquals(windowHandle)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+    }
 }

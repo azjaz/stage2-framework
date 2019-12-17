@@ -29,13 +29,14 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .chooseCommittedUsageBlock(config.getUsageTerm())
                 .pressAddToEstimateButton();
 
+        String totalCostFromCalculator = totalCostCounter(testPage.getTotalCostFromCalculator().split(" "));
 
         ResultsOfCountingEstimateCostPage testEmailServicePage = testPage.pressEmailEstimateButton()
                 .fillEmailField()
                 .pressSendEmailButton()
                 .spinMessageList();
 
-        String totalCostFromCalculator = totalCostCounter(testPage.getTotalCostFromCalculator().split(" "));
+
         String totalCostFromMail = totalCostCounter(testEmailServicePage.getTotalCostFromTheLetter());
 
         Assert.assertEquals(totalCostFromCalculator, totalCostFromMail);
