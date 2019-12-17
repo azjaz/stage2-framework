@@ -39,7 +39,7 @@ public class AbstractCorePage {
         return new WebDriverWait(driver, DRIVER_TIMEOUT)
                 .until(ExpectedConditions.visibilityOf(element));
     }
-    public void tabSwitcher(String currentWindow) {
+    protected void tabSwitcher(String currentWindow) {
         for(String windowHandle : driver.getWindowHandles()) {
             if(!currentWindow.contentEquals(windowHandle)) {
                 driver.switchTo().window(windowHandle);

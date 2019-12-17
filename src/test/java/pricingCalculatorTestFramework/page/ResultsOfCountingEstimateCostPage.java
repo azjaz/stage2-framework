@@ -24,7 +24,7 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
     private WebElement emailEstimateButton;
 
     @FindBy(xpath = "//button[contains(@aria-label,'Send') and contains(., 'Email')]")
-    WebElement sendEmailButton;
+    private WebElement sendEmailButton;
 
     @FindBy(xpath = "//div[@class='mail-address']/input[@id='mailAddress']")
     private WebElement emailAddress;
