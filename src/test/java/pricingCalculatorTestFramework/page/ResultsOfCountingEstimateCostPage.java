@@ -14,8 +14,8 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
     private final Logger logger = LogManager.getRootLogger();
 
     private String emailToPaste;
-    private String totalCostFromCalcXpath = "//h2[@class='md-title']/b";
-    private String formForEmailXpath = "//form[@name='emailForm']//input[@type='email']";
+    private final String totalCostFromCalcXpath = "//h2[@class='md-title']/b";
+    private final String formForEmailXpath = "//form[@name='emailForm']//input[@type='email']";
 
     @FindBy(xpath = "//iframe[contains(@src,'cloudpricingcalculator')]")
     private WebElement googleFrame;
@@ -77,9 +77,9 @@ public class ResultsOfCountingEstimateCostPage extends AbstractCorePage {
         fillFieldsWithClick(messageList);
         return this;
     }
-    public String[] getTotalCostFromTheLetter() {
+    public String getTotalCostFromTheLetter() {
         String costFromEmail = waiter(totalCostInLetter).getText();
         logger.info("Total cost from letter is present");
-        return costFromEmail.split(" ");
+        return costFromEmail;
     }
 }

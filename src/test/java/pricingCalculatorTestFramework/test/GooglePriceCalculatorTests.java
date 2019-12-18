@@ -38,7 +38,7 @@ public class GooglePriceCalculatorTests extends TestCommonConditions {
                 .spinMessageList();
 
 
-        String totalCostFromMail = totalCostCounter(testEmailServicePage.getTotalCostFromTheLetter());
+        String totalCostFromMail = totalCostCounter(testEmailServicePage.getTotalCostFromTheLetter().split(" "));
 
         Assert.assertEquals(totalCostFromCalculator, totalCostFromMail);
 
